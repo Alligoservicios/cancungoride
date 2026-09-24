@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahir Ride Cancún | Transportación Turística Privada</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        turq: {
+                            DEFAULT: '#00A8B5',
+                            dark: '#008590',
+                            light: '#E6F7F8',
+                            50: '#F0FBFB'
+                        },
+                        navy: {
+                            DEFAULT: '#0B2545',
+                            light: '#133C6B',
+                            dark: '#06162B'
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased selection:bg-turq selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-turq to-gold flex items-center justify-center text-navy font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-van-shuttle text-white"></i>
+                </div>
+                <div>
+                    <span class="font-heading font-extrabold text-xl tracking-wide block leading-tight text-white">SAHIR RIDE</span>
+                    <span class="text-xs text-turq font-medium tracking-widest uppercase">Cancún & Riviera Maya</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#inicio" class="hover:text-turq transition-colors">Inicio</a>
+                <a href="#flota" class="hover:text-turq transition-colors">Nuestra Flota</a>
+                <a href="#tarifas" class="hover:text-turq transition-colors">Rutas y Tarifas</a>
+                <a href="#reservar" class="hover:text-turq transition-colors">Cotizador</a>
+                <a href="#pagos" class="hover:text-turq transition-colors">Métodos de Pago</a>
+            </nav>
+
+            <!-- CTA Button Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#reservar" class="bg-turq hover:bg-turq-dark text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-turq/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fa-regular fa-calendar-check"></i> Reservar Viaje
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none p-2" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Modal / Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy/98 border-t border-white/10 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="#inicio" class="block text-lg font-medium hover:text-turq mobile-link">Inicio</a>
+            <a href="#flota" class="block text-lg font-medium hover:text-turq mobile-link">Nuestra Flota</a>
+            <a href="#tarifas" class="block text-lg font-medium hover:text-turq mobile-link">Rutas y Tarifas</a>
+            <a href="#reservar" class="block text-lg font-medium hover:text-turq mobile-link">Cotizador</a>
+            <a href="#pagos" class="block text-lg font-medium hover:text-turq mobile-link">Métodos de Pago</a>
+            <div class="pt-4 border-t border-white/10">
+                <a href="#reservar" class="w-full bg-turq hover:bg-turq-dark text-white py-3 rounded-xl font-semibold text-center block shadow-lg shadow-turq/30 mobile-link">
+                    <i class="fa-regular fa-calendar-check mr-2"></i> Reservar Viaje
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-24 pb-16 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-turq font-semibold text-xs sm:text-sm tracking-wide uppercase">
+                        <i class="fa-solid fa-plane-arrival"></i> Traslados Aeropuerto de Cancún & Riviera Maya
+                    </div>
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Transportación Privada y Segura en <span class="text-turq underline decoration-gold decoration-4 underline-offset-8">Cancún</span>
+                    </h1>
+                    <p class="text-gray-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Disfruta de un traslado exclusivo y confortable a bordo de nuestros vehículos Sedán BAIC U5 o nuestra amplia Toyota Hiace. Ofrecemos tarifas competitivas y fijas desde el Aeropuerto Internacional de Cancún con destinos a Cancún Centro, Zona Hotelera, y toda la Riviera Maya.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#reservar" class="w-full sm:w-auto bg-turq hover:bg-turq-dark text-white px-8 py-4 rounded-xl font-bold text-base shadow-xl shadow-turq/40 transition-all transform hover:-translate-y-1 text-center flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-calculator text-gold"></i> Cotizar Traslado
+                        </a>
+                        <a href="#tarifas" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-semibold text-base transition-all text-center flex items-center justify-center gap-2">
+                            Ver Tarifas <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                    </div>
+                    <!-- Trust badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 text-center lg:text-left">
+                        <div>
+                            <span class="block font-heading font-bold text-2xl text-gold">Desde $499</span>
+                            <span class="text-xs text-gray-300">Tarifas Competitivas</span>
+                        </div>
+                        <div>
+                            <span class="block font-heading font-bold text-2xl text-gold">24/7</span>
+                            <span class="text-xs text-gray-300">Monitoreo de Vuelos</span>
+                        </div>
+                        <div>
+                            <span class="block font-heading font-bold text-2xl text-gold">100%</span>
+                            <span class="text-xs text-gray-300">Privado y Seguro</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Cuadro de Sobre Nosotros en el Hero -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-2xl space-y-6">
+                        <div class="text-center">
+                            <span class="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-3 py-1.5 rounded-full border border-gold/20">Sobre Nosotros</span>
+                            <h3 class="font-heading font-bold text-2xl text-white mt-3">Sahir Ride Cancún</h3>
+                        </div>
+
+                        <p class="text-gray-200 text-sm leading-relaxed text-center font-light">
+                            Somos una empresa 100% mexicana especializada en <span class="text-turq font-semibold">transportación turística privada</span> en Cancún y la Riviera Maya. Nuestro compromiso es brindarte traslados puntuales, cómodos y seguros desde el primer momento de tu llegada.
+                        </p>
+
+                        <!-- Puntos Clave / Características -->
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-white/10 text-white">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-xl bg-turq/20 text-turq flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-user-shield text-sm"></i>
+                                </div>
+                                <span class="text-xs font-medium">Choferes Certificados</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-xl bg-turq/20 text-turq flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-clock text-sm"></i>
+                                </div>
+                                <span class="text-xs font-medium">Puntualidad 24/7</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-xl bg-turq/20 text-turq flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-plane text-sm"></i>
+                                </div>
+                                <span class="text-xs font-medium">Monitoreo de Vuelos</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-xl bg-turq/20 text-turq flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-star text-sm"></i>
+                                </div>
+                                <span class="text-xs font-medium">Confort Garantizado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Flotat Section -->
+    <section id="flota" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Comodidad Garantizada</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Nuestra Flota de Vehículos</h2>
+                <p class="text-gray-600 mt-2">Unidades completamente equipadas, aire acondicionado impecable y choferes profesionales para tu traslado seguro.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Vehicle 1: Sedan -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="s.webp" alt="Sedán BAIC U5 Plus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Sedan+BAIC+U5+Plus'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            1 a 3 Pasajeros
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Sedán BAIC U5 Plus <span class="text-gold text-sm font-normal block">Insignia Beijing</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Ideal para parejas, viajeros solitarios o pequeños grupos de hasta 3 pasajeros con equipaje moderado. Confort, elegancia y excelente rendimiento para trayectos rápidos.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 4 Pasajeros</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-suitcase text-turq"></i> <span>Equipaje estándar</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2: Toyota Hiace -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="t.webp" alt="Toyota Hiace Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Toyota+Hiace+Van'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-gold text-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            1 a 10 Pasajeros
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Toyota Hiace / Van <span class="text-turq text-sm font-normal block">Espacio y Comodidad Familiar</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Furgoneta (van) espaciosa y robusta perfecta para familias grandes, grupos de amigos o viajes de negocios que transportan equipaje abundante con total comodidad.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 10 Pasajeros</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-boxes-stacked text-turq"></i> <span>Amplio maletero</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Climatización total</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Routes & Tariffs Table / Cards Section -->
+    <section id="tarifas" class="py-20 bg-gray-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Transparencia Total</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Rutas y Tarifas Oficiales</h2>
+                <p class="text-gray-600 mt-2">Precios fijos por vehículo para salidas desde el Aeropuerto de Cancún y de regreso. Sin cobros sorpresa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Route 1: Cancun -->
+                <div class="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-hotel"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Cancún Centro / Zona Hotelera</h3>
+                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Cancún</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-gray-100">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-turq-dark">$599 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('Cancun')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Route 2: Costa Mujeres -->
+                <div class="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Costa Mujeres</h3>
+                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Costa Mujeres</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-gray-100">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$899 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-turq-dark">$999 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('CostaMujeres')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Route 3: Playa del Carmen -->
+                <div class="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-umbrella-beach"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Playa del Carmen</h3>
+                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Playa del Carmen</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-gray-100">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,299 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-turq-dark">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('PlayaDelCarmen')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Route 4: Akumal -->
+                <div class="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-fish-fins"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Akumal</h3>
+                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Akumal</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-gray-100">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-turq-dark">$1,499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('Akumal')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Route 5: Tulum -->
+                <div class="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-gopuram"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Tulum</h3>
+                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Tulum</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-gray-100">
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,800 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-turq-dark">$2,000 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('Tulum')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Booking & Calculator Form Section -->
+    <section id="reservar" class="py-20 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-navy to-navy-light text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-white/10">
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-turq/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-3 py-1.5 rounded-full border border-gold/20">Cotizador y Reserva Interactiva</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold mt-3">Calcula tu Tarifa al Instante</h2>
+                    <p class="text-gray-300 text-sm mt-2">Selecciona tu vehículo, ruta y tipo de viaje. El precio se calculará automáticamente para enviarlo por WhatsApp.</p>
+                </div>
+
+                <form id="whatsapp-booking-form" onsubmit="sendToWhatsAppAdvanced(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Nombre -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-regular fa-user mr-1"></i> Nombre Completo
+                            </label>
+                            <input type="text" id="client-name" required placeholder="Ej. Mariana Gómez" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-turq transition-colors">
+                        </div>
+
+                        <!-- Tipo de Vehículo -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-solid fa-car-side mr-1"></i> Vehículo Seleccionado
+                            </label>
+                            <select id="vehicle-select" onchange="calculatePrice()" class="w-full bg-[#0B2545] border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
+                                <option value="Sedan">Sedán BAIC U5 Plus (1-4 personas)</option>
+                                <option value="Van" selected>Toyota Hiace / Van (1-10 personas)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Ruta -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-solid fa-map-location-dot mr-1"></i> Ruta (Aeropuerto ⇄ Destino)
+                            </label>
+                            <select id="route-select" onchange="calculatePrice()" class="w-full bg-[#0B2545] border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
+                                <option value="Cancun">Aeropuerto ⇄ Cancún Centro / Zona Hotelera</option>
+                                <option value="CostaMujeres">Aeropuerto ⇄ Costa Mujeres</option>
+                                <option value="PlayaDelCarmen" selected>Aeropuerto ⇄ Playa del Carmen</option>
+                                <option value="Akumal">Aeropuerto ⇄ Akumal</option>
+                                <option value="Tulum">Aeropuerto ⇄ Tulum</option>
+                            </select>
+                        </div>
+
+                        <!-- Tipo de Servicio -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-solid fa-right-left mr-1"></i> Tipo de Servicio
+                            </label>
+                            <select id="trip-type" onchange="calculatePrice()" class="w-full bg-[#0B2545] border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
+                                <option value="Sencillo">Sencillo (One Way)</option>
+                                <option value="Redondo">Redondo (Round Trip - Doble tarifa)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Fecha del viaje -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-regular fa-calendar mr-1"></i> Fecha del Traslado
+                            </label>
+                            <input type="date" id="travel-date" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
+                        </div>
+
+                        <!-- Número de pasajeros -->
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-solid fa-users mr-1"></i> Número de Pasajeros
+                            </label>
+                            <input type="number" id="passengers-count" min="1" max="10" value="2" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Comentarios adicionales -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                            <i class="fa-regular fa-comment mr-1"></i> Notas / Número de Vuelo / Hotel (Opcional)
+                        </label>
+                        <textarea id="travel-notes" rows="2" placeholder="Ej. Vuelo Volaris Y4 123, hora de llegada 2:30 PM, nombre del hotel..." class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-turq transition-colors"></textarea>
+                    </div>
+
+                    <!-- Price Calculation Banner -->
+                    <div class="bg-white/10 border border-gold/40 rounded-2xl p-5 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider text-gold font-bold block">Tarifa Estimada Calculada:</span>
+                            <span class="text-xs text-gray-300" id="price-desc">Toyota Hiace • Playa del Carmen (Sencillo)</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-heading font-extrabold text-3xl text-turq" id="estimated-price">$1,399 MXN</span>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Envío -->
+                    <div class="pt-2 text-center">
+                        <button type="submit" class="w-full sm:w-auto bg-turq hover:bg-turq-dark text-white font-bold px-10 py-4 rounded-2xl shadow-xl shadow-turq/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 mx-auto text-base">
+                            <i class="fa-brands fa-whatsapp text-2xl text-gold"></i>
+                            <span>Reservar y Enviar a WhatsApp</span>
+                        </button>
+                        <span class="block text-xs text-gray-400 mt-3"><i class="fa-solid fa-lock text-gold"></i> Atención inmediata 24/7 • Pago seguro al abordar o en línea</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section id="pagos" class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Facilidades de Pago</span>
+            <h2 class="font-heading text-3xl font-extrabold text-navy mt-3 mb-4">Métodos de Pago Seguros</h2>
+            <p class="text-gray-600 max-w-xl mx-auto text-sm mb-12">Elige la forma de pago que mejor se adapte a tus necesidades para mayor tranquilidad.</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <!-- Card 1: Tarjetas -->
+                <div class="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <span class="font-bold text-sm text-navy">Tarjetas de Crédito / Débito</span>
+                    <span class="text-xs text-gray-500">Visa, Master Card, Amex</span>
+                </div>
+
+                <!-- Card 2: Efectivo -->
+                <div class="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <span class="font-bold text-sm text-navy">Efectivo</span>
+                    <span class="text-xs text-gray-500">MXN / USD (Al abordar)</span>
+                </div>
+
+                <!-- Card 3: PayPal -->
+                <div class="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-brands fa-paypal"></i>
+                    </div>
+                    <span class="font-bold text-sm text-navy">PayPal</span>
+                    <span class="text-xs text-gray-500">Pago en línea rápido</span>
+                </div>
+
+                <!-- Card 4: Transferencia -->
+                <div class="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-xl flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <span class="font-bold text-sm text-navy">Transferencia SPEI</span>
+                    <span class="text-xs text-gray-500">Bancaria nacional</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contacto" class="bg-navy text-white pt-16 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-turq flex items-center justify-center text-white font-bold text-lg">
+                            <i class="fa-solid fa-van-shuttle"></i>
+                        </div>
+                        <span class="font-heading font-extrabold text-xl tracking-wide">SAHIR RIDE</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Servicio de transportación turística privada desde el Aeropuerto de Cancún hacia Cancún, Costa Mujeres, Playa del Carmen, Akumal y Tulum.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg text-turq mb-4">Nuestra Flota</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-300">
+                        <li><a href="#flota" class="hover:text-turq transition-colors">Sedán BAIC U5 Plus (1-3 pax)</a></li>
+                        <li><a href="#flota" class="hover:text-turq transition-colors">Toyota Hiace Van (1-10 pax)</a></li>
+                        <li><a href="#tarifas" class="hover:text-turq transition-colors">Tarifas Oficiales</a></li>
+                        <li><a href="#reservar" class="hover:text-turq transition-colors">Cotizador en Línea</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg text-turq mb-4">Rutas Principales</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-300">
+                        <li><a href="#tarifas" class="hover:text-turq transition-colors">Aeropuerto ⇄ Cancún ($499/$599)</a></li>
+                        <li><a href="#tarifas" class="hover:text-turq transition-colors">Aeropuerto ⇄ Costa Mujeres ($999)</a></li>
+                        <li><a href="#tarifas" class="hover:text-turq transition-colors">Aeropuerto ⇄ Playa del Carmen ($1,399)</a></li>
+                        <li><a href="#tarifas" class="hover:text-turq transition-colors">Aeropuerto ⇄ Akumal & Tulum</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-heading font-bold text-lg text-turq mb-4">Contacto Directo</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-turq mt-1"></i>
+                            <span>Aeropuerto Internacional de Cancún & Riviera Maya, Q.Roo, México.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-turq"></i>
+                            <span>+52 (984) 100 1000</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-turq"></i>
+                            <span>reservas@sahirridecancun.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+                <p>&copy; 2026 Sahir Ride Cancún. Todos los derechos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-turq transition-colors">Aviso de Privacidad</a>
+                    <a href="#" class="hover:text-turq transition-colors">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/529842358145?text=Hola,%20Sahir%20Ride%20Cancún,%20deseo%20cotizar%20un%20traslado%20privado." target="_blank" rel="noopener noreferrer" class="whatsapp-float bg-[#25D366] hover:bg-[#20ba5a] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all" aria-label="Chat por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Enlace al archivo de script externo -->
+    <script src="script.js"></script>
+</body>
+</html>
