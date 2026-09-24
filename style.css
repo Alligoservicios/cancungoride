@@ -16,3 +16,33 @@
 .whatsapp-float:hover {
     transform: scale(1.08);
 }
+
+//* Forzar desplazamiento suave y táctil en contenedores horizontales */
+.overflow-x-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+/* Ocultar barra de desplazamiento manteniendo funcionalidad */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animación de aviso de desplazamiento horizontal (Scroll Hint) */
+@keyframes peekHint {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-35px);
+    }
+}
+
+.scroll-hint-anim {
+    animation: peekHint 1.2s ease-in-out 2; 
+}
