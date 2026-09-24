@@ -16,3 +16,17 @@
 .whatsapp-float:hover {
     transform: scale(1.08);
 }
+
+/* Animación de aviso de desplazamiento horizontal (Scroll Hint) */
+@keyframes peekHint {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-30px);
+    }
+}
+
+.scroll-hint-anim {
+    animation: peekHint 1.5s ease-in-out 3; 
+}
