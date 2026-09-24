@@ -264,142 +264,141 @@
 </section>
 
     <!-- Rutas y Tarifas Section -->
-     <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 md:px-0 no-scrollbar scroll-smooth scroll-hint-anim"></div>
-    <section id="tarifas" class="py-20 bg-gray-100/70 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Transparencia Total</span>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Rutas y Tarifas Oficiales</h2>
-                <p class="text-gray-600 mt-2">Precios fijos por vehículo para salidas desde el Aeropuerto de Cancún y de regreso. Sin cobros sorpresa.</p>
-            </div>
-
-            <!-- Contenedor: Carrusel horizontal en celular, Grid adaptativo en PC -->
-            <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 md:px-0 no-scrollbar scroll-smooth">
-                
-                <!-- Route 1: Cancun -->
-                <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-hotel"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Cancún Centro / Zona Hotelera</h3>
-                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Cancún</p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-gray-100">
-                        <div class="bg-gray-50 p-3 rounded-xl">
-                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-navy">$499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
-                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-turq-dark">$599 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <button onclick="selectRouteAndScroll('Cancun')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
-                            Reservar Ruta
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Route 2: Costa Mujeres -->
-                <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-water"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Costa Mujeres</h3>
-                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Costa Mujeres</p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-gray-100">
-                        <div class="bg-gray-50 p-3 rounded-xl">
-                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-navy">$899 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
-                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-turq-dark">$999 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <button onclick="selectRouteAndScroll('CostaMujeres')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
-                            Reservar Ruta
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Route 3: Playa del Carmen -->
-                <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-umbrella-beach"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Playa del Carmen</h3>
-                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Playa del Carmen</p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-gray-100">
-                        <div class="bg-gray-50 p-3 rounded-xl">
-                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-navy">$1,299 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
-                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-turq-dark">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <button onclick="selectRouteAndScroll('PlayaDelCarmen')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
-                            Reservar Ruta
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Route 4: Akumal -->
-                <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-fish-fins"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Akumal</h3>
-                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Akumal</p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-gray-100">
-                        <div class="bg-gray-50 p-3 rounded-xl">
-                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-navy">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
-                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-turq-dark">$1,499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <button onclick="selectRouteAndScroll('Akumal')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
-                            Reservar Ruta
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Route 5: Tulum -->
-                <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-gopuram"></i>
-                        </div>
-                        <h3 class="font-heading font-bold text-lg text-navy mb-1">Tulum</h3>
-                        <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Tulum</p>
-                    </div>
-                    <div class="space-y-3 pt-4 border-t border-gray-100">
-                        <div class="bg-gray-50 p-3 rounded-xl">
-                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-navy">$1,800 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
-                            <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
-                            <span class="font-heading font-extrabold text-xl text-turq-dark">$2,000 <span class="text-xs font-normal text-gray-500">MXN</span></span>
-                        </div>
-                        <button onclick="selectRouteAndScroll('Tulum')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
-                            Reservar Ruta
-                        </button>
-                    </div>
-                </div>
-
-            </div>
+<section id="tarifas" class="py-20 bg-gray-100/70 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Transparencia Total</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Rutas y Tarifas Oficiales</h2>
+            <p class="text-gray-600 mt-2">Precios fijos por vehículo para salidas desde el Aeropuerto de Cancún y de regreso. Sin cobros sorpresa.</p>
         </div>
-    </section>
 
+        <!-- Contenedor: Carrusel horizontal en celular, Grid adaptativo en PC (AQUÍ AGREGAMOS scroll-hint-anim) -->
+        <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 md:px-0 no-scrollbar scroll-smooth scroll-hint-anim">
+            
+            <!-- Route 1: Cancun -->
+            <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-navy mb-1">Cancún Centro / Zona Hotelera</h3>
+                    <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Cancún</p>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-gray-100">
+                    <div class="bg-gray-50 p-3 rounded-xl">
+                        <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-navy">$499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                        <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-turq-dark">$599 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <button onclick="selectRouteAndScroll('Cancun')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                        Reservar Ruta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Route 2: Costa Mujeres -->
+            <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-navy mb-1">Costa Mujeres</h3>
+                    <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Costa Mujeres</p>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-gray-100">
+                    <div class="bg-gray-50 p-3 rounded-xl">
+                        <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-navy">$899 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                        <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-turq-dark">$999 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <button onclick="selectRouteAndScroll('CostaMujeres')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                        Reservar Ruta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Route 3: Playa del Carmen -->
+            <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-navy mb-1">Playa del Carmen</h3>
+                    <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Playa del Carmen</p>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-gray-100">
+                    <div class="bg-gray-50 p-3 rounded-xl">
+                        <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-navy">$1,299 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                        <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-turq-dark">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <button onclick="selectRouteAndScroll('PlayaDelCarmen')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                        Reservar Ruta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Route 4: Akumal -->
+            <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-fish-fins"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-navy mb-1">Akumal</h3>
+                    <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Akumal</p>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-gray-100">
+                    <div class="bg-gray-50 p-3 rounded-xl">
+                        <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-navy">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                        <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-turq-dark">$1,499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <button onclick="selectRouteAndScroll('Akumal')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                        Reservar Ruta
+                    </button>
+                </div>
+            </div>
+
+            <!-- Route 5: Tulum -->
+            <div class="w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-turq-light text-turq rounded-2xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-gopuram"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-navy mb-1">Tulum</h3>
+                    <p class="text-xs text-gray-500 mb-4">Aeropuerto ⇄ Tulum</p>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-gray-100">
+                    <div class="bg-gray-50 p-3 rounded-xl">
+                        <span class="block text-[11px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-3 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-navy">$1,800 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
+                        <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                        <span class="font-heading font-extrabold text-xl text-turq-dark">$2,000 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                    </div>
+                    <button onclick="selectRouteAndScroll('Tulum')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
+                        Reservar Ruta
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
     <!-- Advanced Booking & Calculator Form Section -->
     <section id="reservar" class="py-20 bg-white relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
