@@ -153,7 +153,7 @@ function sendToWhatsAppAdvanced(e) {
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(whatsappURL, '_blank');
 
-// Limpieza segura de campos de texto tras enviar
+    // Limpieza segura de campos de texto tras enviar
     setTimeout(() => {
         const nameInput = document.getElementById('client-name');
         const notesInput = document.getElementById('travel-notes');
@@ -171,5 +171,4 @@ function sendToWhatsAppAdvanced(e) {
 
         calculatePrice();
     }, 500);
-
 }
