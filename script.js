@@ -153,7 +153,7 @@ function sendToWhatsAppAdvanced(e) {
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(whatsappURL, '_blank');
 
-// Limpieza segura de campos de texto tras enviar
+    // Limpieza segura de campos de texto tras enviar
     setTimeout(() => {
         const nameInput = document.getElementById('client-name');
         const notesInput = document.getElementById('travel-notes');
@@ -171,5 +171,26 @@ function sendToWhatsAppAdvanced(e) {
 
         calculatePrice();
     }, 500);
-
 }
+
+// Activar animación de deslizamiento (scroll hint) cuando el elemento entra en pantalla
+document.addEventListener("DOMContentLoaded", function() {
+    const hintContainers = document.querySelectorAll('.scroll-hint-anim');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'none';
+                entry.target.offsetHeight; // Trigger reflow
+                entry.target.style.animation = null;
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.4 // Se activa cuando al menos el 40% del contenedor es visible en pantalla
+    });
+
+    hintContainers.forEach(container => {
+        observer.observe(container);
+    });
+});
