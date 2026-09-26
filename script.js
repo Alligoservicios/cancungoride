@@ -41,22 +41,22 @@ if (travelDateInput) {
 
 // Mostrar u ocultar la fecha de regreso según el tipo de servicio seleccionado
 function toggleReturnDate() {
-    const tripTypeEl = document.getElementById('trip-type');
-    if (!tripTypeEl) return;
-    
-    const tripType = tripTypeEl.value;
+    const tripType = document.getElementById('trip-type').value;
     const returnContainer = document.getElementById('return-date-container');
-    const returnDateEl = document.getElementById('return-date');
+    const returnDateInput = document.getElementById('return-date');
 
     if (tripType === 'Redondo') {
-        if (returnContainer) returnContainer.classList.remove('hidden');
-        if (returnDateEl) returnDateEl.required = true;
+        // Muestra el contenedor de la fecha de regreso
+        returnContainer.classList.remove('hidden');
+        // Vuelve el campo obligatorio para que el navegador lo valide al enviar
+        returnDateInput.setAttribute('required', 'true');
     } else {
-        if (returnContainer) returnContainer.classList.add('hidden');
-        if (returnDateEl) {
-            returnDateEl.required = false;
-            returnDateEl.value = '';
-        }
+        // Oculta el contenedor si es viaje sencillo
+        returnContainer.classList.add('hidden');
+        // Remueve el required para evitar el error de elemento oculto no focalizable
+        returnDateInput.removeAttribute('required');
+        // Opcional: limpia el valor anterior si cambia de opinión
+        returnDateInput.value = '';
     }
 }
 
@@ -159,7 +159,7 @@ function selectRouteAndScroll(routeKey) {
     }
 }
 
-// Send to WhatsApp with advanced message and Voucher/QR generation (Manual Trigger)
+// Send reservation details to Voucher, Make (Webhook) and display modal
 function sendToWhatsAppAdvanced(e) {
     e.preventDefault();
 
@@ -170,7 +170,11 @@ function sendToWhatsAppAdvanced(e) {
     const dateEl = document.getElementById('travel-date');
     const returnDateEl = document.getElementById('return-date');
     const passengersEl = document.getElementById('passengers-count');
-    const notesEl = document.getElementById('travel-notes');
+    
+    // Captura de los campos específicos de vuelo y hotel
+    const airlineEl = document.getElementById('travel-airline');
+    const flightEl = document.getElementById('travel-flight');
+    const hotelEl = document.getElementById('travel-hotel');
 
     if (!nameEl || !vehicleEl || !routeEl || !tripTypeEl || !dateEl) return;
 
@@ -181,7 +185,10 @@ function sendToWhatsAppAdvanced(e) {
     const date = dateEl.value;
     const returnDate = returnDateEl ? returnDateEl.value : '';
     const passengers = passengersEl ? passengersEl.value : '1';
-    const notes = notesEl ? notesEl.value.trim() : '';
+    
+    const airline = airlineEl ? airlineEl.value.trim() : '';
+    const flight = flightEl ? flightEl.value.trim() : '';
+    const hotel = hotelEl ? hotelEl.value.trim() : '';
 
     if (!name) {
         alert('Por favor ingresa tu nombre completo para la reserva.');
@@ -222,11 +229,17 @@ function sendToWhatsAppAdvanced(e) {
     setInnerText('v-fecha', fechaTexto);
     setInnerText('v-precio', '$' + finalPrice.toLocaleString() + ' MXN');
 
-    // 1.1 Mostrar u ocultar las Notas en el Voucher de manera dinámica
+    // 1.1 Mostrar u ocultar detalles de Vuelo/Hotel en el Voucher de manera dinámica
     const vNotesContainer = document.getElementById('v-notes-container');
     const vNotasSpan = document.getElementById('v-notas');
-    if (notes) {
-        if (vNotasSpan) vNotasSpan.innerText = notes;
+    
+    let combinedNotes = [];
+    if (airline) combinedNotes.push(`Aerolínea: ${airline}`);
+    if (flight) combinedNotes.push(`Vuelo: ${flight}`);
+    if (hotel) combinedNotes.push(`Hotel/Destino: ${hotel}`);
+
+    if (combinedNotes.length > 0) {
+        if (vNotasSpan) vNotasSpan.innerText = combinedNotes.join(' | ');
         if (vNotesContainer) vNotesContainer.classList.remove('hidden');
     } else {
         if (vNotesContainer) vNotesContainer.classList.add('hidden');
@@ -256,38 +269,7 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Preparar mensaje y asignar enlace al botón de WhatsApp del modal (por si el cliente quiere dar clic manual después)
-    const whatsappNumber = "529982257895"; 
-
-    let message = `¡Hola, *Cancungoride*! Deseo confirmar mi reserva con folio *${folio}* y solicitar datos SPEI:%0A%0A`;
-    message += `👤 *Pasajero:* ${encodeURIComponent(name)}%0A`;
-    message += `🚗 *Vehículo:* ${encodeURIComponent(vehicleName)}%0A`;
-    message += `📍 *Ruta:* Aeropuerto ⇄ ${encodeURIComponent(routeName)}%0A`;
-    message += `🔄 *Tipo de Viaje:* ${encodeURIComponent(tripType)}%0A`;
-    
-    if(tripType === 'Redondo' && returnDate) {
-        message += `📅 *Fecha de Ida:* ${encodeURIComponent(date)}%0A`;
-        message += `📅 *Fecha de Regreso:* ${encodeURIComponent(returnDate)}%0A`;
-    } else {
-        message += `📅 *Fecha:* ${encodeURIComponent(date)}%0A`;
-    }
-
-    message += `👥 *Pasajeros:* ${encodeURIComponent(passengers)}%0A`;
-    message += `💰 *Tarifa Estimada:* $${finalPrice.toLocaleString()} MXN%0A`;
-    message += `💳 *Método de pago:* Transferencia Bancaria (SPEI)%0A`;
-    if(notes) {
-        message += `📝 *Notas/Vuelo:* ${encodeURIComponent(notes)}%0A`;
-    }
-    message += `%0A¡Quedo a la espera de la cuenta CLABE para realizar el depósito!`;
-
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
-    
-    const btnWhatsApp = document.getElementById('btnEnviarWhatsApp');
-    if (btnWhatsApp) {
-        btnWhatsApp.href = whatsappURL;
-    }
-
-    // --- NUEVO: ENVÍO SILENCIOSO A MAKE ---
+    // 3. Envío automático de la información a Make (Webhook)
     const datosReserva = {
         folio: folio,
         name: name,
@@ -298,10 +280,11 @@ function sendToWhatsAppAdvanced(e) {
         returnDate: returnDate,
         passengers: passengers,
         finalPrice: finalPrice,
-        notes: notes
+        airline: airline,
+        flight: flight,
+        hotel: hotel
     };
 
-    // Reemplaza 'TU_URL_DE_WEBHOOK_DE_MAKE_AQUI' con la URL que copiaste de Make
     fetch('https://hook.us2.make.com/kc1u5a6ofhfg0gfdq7j4ttrw5oezse5d', {
         method: 'POST',
         headers: {
@@ -309,10 +292,9 @@ function sendToWhatsAppAdvanced(e) {
         },
         body: JSON.stringify(datosReserva)
     })
-    .catch(error => console.error('Error al enviar alerta:', error));
-    // -------------------------------------
+    .catch(error => console.error('Error al enviar la reserva a Make:', error));
 
-    // 4. Mostrar el Modal del Voucher al cliente de forma limpia
+    // 4. Mostrar el Modal del Voucher al cliente inmediatamente en su pantalla
     const modal = document.getElementById('modalVoucher');
     if (modal) {
         modal.classList.remove('hidden');
@@ -321,7 +303,9 @@ function sendToWhatsAppAdvanced(e) {
     // Limpieza segura de campos de texto del formulario después de procesar
     setTimeout(() => {
         if (nameEl) nameEl.value = '';
-        if (notesEl) notesEl.value = '';
+        if (airlineEl) airlineEl.value = '';
+        if (flightEl) flightEl.value = '';
+        if (hotelEl) hotelEl.value = '';
         if (passengersEl) passengersEl.value = '2';
         if (tripTypeEl) {
             tripTypeEl.value = 'Sencillo';
@@ -390,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }, {
-            threshold: 0.4 // Se activa cuando al menos el 40% del contenedor es visible en pantalla
+            threshold: 0.4
         });
 
         hintContainers.forEach(container => {
