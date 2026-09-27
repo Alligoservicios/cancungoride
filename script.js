@@ -55,7 +55,7 @@ function toggleReturnDate() {
         returnContainer.classList.add('hidden');
         // Remueve el required para evitar el error de elemento oculto no focalizable
         returnDateInput.removeAttribute('required');
-        // Limpia el valor anterior si cambia de opinión
+        // Opcional: limpia el valor anterior si cambia de opinión
         returnDateInput.value = '';
     }
 }
@@ -183,10 +183,7 @@ function sendToWhatsAppAdvanced(e) {
     const routeKey = routeEl.value;
     const tripType = tripTypeEl.value;
     const date = dateEl.value;
-    
-    // CORRECCIÓN: Asigna 'N/P' si el viaje es sencillo o si no hay fecha de regreso seleccionada
-    const returnDate = (tripType === 'Redondo' && returnDateEl && returnDateEl.value) ? returnDateEl.value : 'N/P';
-    
+    const returnDate = returnDateEl ? returnDateEl.value : '';
     const passengers = passengersEl ? passengersEl.value : '1';
     
     const airline = airlineEl ? airlineEl.value.trim() : '';
@@ -199,7 +196,7 @@ function sendToWhatsAppAdvanced(e) {
         return;
     }
 
-    if (tripType === 'Redondo' && (!returnDateEl || !returnDateEl.value)) {
+    if (tripType === 'Redondo' && !returnDate) {
         alert('Por favor selecciona la fecha de regreso para tu viaje redondo.');
         if (returnDateEl) returnDateEl.focus();
         return;
@@ -224,12 +221,9 @@ function sendToWhatsAppAdvanced(e) {
     setInnerText('v-vehiculo', vehicleKey === 'Sedan' ? 'Sedán BAIC' : 'Toyota Hiace');
     setInnerText('v-ruta', routeName);
     
-    // CORRECCIÓN: Estructura clara del texto de fecha incluyendo N/P si es sencillo
     let fechaTexto = 'Ida: ' + date;
-    if (tripType === 'Redondo') {
+    if (tripType === 'Redondo' && returnDate) {
         fechaTexto += ' | Regreso: ' + returnDate;
-    } else {
-        fechaTexto += ' | Regreso: N/P';
     }
     fechaTexto += ' (' + tripType + '; ' + passengers + ' pax)';
     setInnerText('v-fecha', fechaTexto);
@@ -255,7 +249,7 @@ function sendToWhatsAppAdvanced(e) {
     const qrContainer = document.getElementById('codigoQR');
     if (qrContainer) {
         qrContainer.innerHTML = '';
-        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}|Regreso:${returnDate}|Pax:${passengers}|Total:$${finalPrice}`;
+        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${returnDate ? '|Regreso:'+returnDate : ''}|Total:$${finalPrice}`;
         
         if (typeof QRCode !== 'undefined') {
             try {
@@ -275,7 +269,7 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Envío automático de la información a Make (Webhook)
+    // 3. Envío automático de la información al NUEVO Webhook de Make
     const datosReserva = {
         folio: folio,
         name: name,
@@ -283,7 +277,7 @@ function sendToWhatsAppAdvanced(e) {
         routeName: routeName,
         tripType: tripType,
         date: date,
-        returnDate: returnDate, // Ahora enviará 'N/P' correctamente si es viaje sencillo
+        returnDate: returnDate,
         passengers: passengers,
         finalPrice: finalPrice,
         airline: airline,
@@ -291,7 +285,7 @@ function sendToWhatsAppAdvanced(e) {
         hotel: hotel
     };
 
-    fetch('https://hook.us2.make.com/kc1u5a6ofhfg0gfdq7j4ttrw5oezse5d', {
+    fetch('https://hook.us2.make.com/wkuypywfirfk7dme2iq15jsjpuyq0vdn', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -321,7 +315,7 @@ function sendToWhatsAppAdvanced(e) {
         if (dateEl) {
             const today = new Date().toISOString().split('T')[0];
             dateEl.value = today;
-            if (returnDateEl) returnDateEl.value = '';
+            if (returnDateEl) returnDateEl.value = today;
         }
 
         calculatePrice();
