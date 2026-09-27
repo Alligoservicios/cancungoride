@@ -25,14 +25,20 @@ if (travelDateInput) {
     travelDateInput.min = today;
     if (returnDateInput) {
         returnDateInput.min = today;
-        returnDateInput.value = today;
+        // Solo asignamos el valor de hoy si el tipo de viaje actual es redondo, de lo contrario se queda vacío
+        const currentTripType = document.getElementById('trip-type');
+        if (currentTripType && currentTripType.value === 'Redondo') {
+            returnDateInput.value = today;
+        } else {
+            returnDateInput.value = '';
+        }
     }
     
     // Actualizar dinámicamente el mínimo de la fecha de regreso al cambiar la fecha de ida
     travelDateInput.addEventListener('change', function() {
         if (returnDateInput) {
             returnDateInput.min = this.value;
-            if (returnDateInput.value < this.value) {
+            if (returnDateInput.value && returnDateInput.value < this.value) {
                 returnDateInput.value = this.value;
             }
         }
@@ -50,12 +56,16 @@ function toggleReturnDate() {
         returnContainer.classList.remove('hidden');
         // Vuelve el campo obligatorio para que el navegador lo valide al enviar
         returnDateInput.setAttribute('required', 'true');
+        // Si estaba vacío, le ponemos la fecha de hoy por defecto
+        if (!returnDateInput.value && travelDateInput) {
+            returnDateInput.value = travelDateInput.value;
+        }
     } else {
         // Oculta el contenedor si es viaje sencillo
         returnContainer.classList.add('hidden');
         // Remueve el required para evitar el error de elemento oculto no focalizable
         returnDateInput.removeAttribute('required');
-        // Opcional: limpia el valor anterior si cambia de opinión
+        // Limpia el valor anterior para evitar que se envíe basura a Make
         returnDateInput.value = '';
     }
 }
@@ -183,7 +193,10 @@ function sendToWhatsAppAdvanced(e) {
     const routeKey = routeEl.value;
     const tripType = tripTypeEl.value;
     const date = dateEl.value;
-    const returnDate = returnDateEl ? returnDateEl.value : '';
+    
+    // Captura limpia: solo toma la fecha si es Redondo, de lo contrario envía 'No aplica' u omite
+    const returnDate = (tripType === 'Redondo' && returnDateEl) ? returnDateEl.value : 'No aplica';
+    
     const passengers = passengersEl ? passengersEl.value : '1';
     
     const airline = airlineEl ? airlineEl.value.trim() : '';
@@ -196,7 +209,7 @@ function sendToWhatsAppAdvanced(e) {
         return;
     }
 
-    if (tripType === 'Redondo' && !returnDate) {
+    if (tripType === 'Redondo' && (!returnDate || returnDate === 'No aplica')) {
         alert('Por favor selecciona la fecha de regreso para tu viaje redondo.');
         if (returnDateEl) returnDateEl.focus();
         return;
@@ -222,7 +235,7 @@ function sendToWhatsAppAdvanced(e) {
     setInnerText('v-ruta', routeName);
     
     let fechaTexto = 'Ida: ' + date;
-    if (tripType === 'Redondo' && returnDate) {
+    if (tripType === 'Redondo' && returnDate && returnDate !== 'No aplica') {
         fechaTexto += ' | Regreso: ' + returnDate;
     }
     fechaTexto += ' (' + tripType + '; ' + passengers + ' pax)';
@@ -249,7 +262,7 @@ function sendToWhatsAppAdvanced(e) {
     const qrContainer = document.getElementById('codigoQR');
     if (qrContainer) {
         qrContainer.innerHTML = '';
-        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${returnDate ? '|Regreso:'+returnDate : ''}|Total:$${finalPrice}`;
+        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${(tripType === 'Redondo' && returnDate !== 'No aplica') ? '|Regreso:'+returnDate : ''}|Total:$${finalPrice}`;
         
         if (typeof QRCode !== 'undefined') {
             try {
@@ -269,7 +282,7 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Envío automático de la información al NUEVO Webhook de Make
+    // 3. Envío automático de la información al Webhook de Make
     const datosReserva = {
         folio: folio,
         name: name,
@@ -315,7 +328,7 @@ function sendToWhatsAppAdvanced(e) {
         if (dateEl) {
             const today = new Date().toISOString().split('T')[0];
             dateEl.value = today;
-            if (returnDateEl) returnDateEl.value = today;
+            if (returnDateEl) returnDateEl.value = '';
         }
 
         calculatePrice();
