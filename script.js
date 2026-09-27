@@ -269,7 +269,7 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Envío automático de la información a Make (Webhook)
+    // 3. Envío automático de la información al NUEVO Webhook de Make
     const datosReserva = {
         folio: folio,
         name: name,
@@ -285,7 +285,7 @@ function sendToWhatsAppAdvanced(e) {
         hotel: hotel
     };
 
-    fetch('https://hook.us2.make.com/kc1u5a6ofhfg0gfdq7j4ttrw5oezse5d', {
+    fetch('https://hook.us2.make.com/wkuypywfirfk7dme2iq15jsjpuyq0vdn', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
