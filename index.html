@@ -433,6 +433,62 @@
                         </div>
                     </div>
 
+                    <!-- Teléfono / WhatsApp con Prefijo -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                            <i class="fa-solid fa-phone mr-1"></i> Teléfono / WhatsApp
+                        </label>
+                        <div class="flex gap-2">
+                            <input list="country-codes" id="phone-prefix" value="+52" class="w-28 sm:w-32 bg-white/10 border border-white/20 rounded-xl px-3 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors" placeholder="Prefijo">
+                            <datalist id="country-codes">
+                                <!-- Norte y Centroamérica -->
+                                <option value="+52">México (+52)</option>
+                                <option value="+1">EE. UU. / Canadá (+1)</option>
+                                <option value="+502">Guatemala (+502)</option>
+                                <option value="+503">El Salvador (+503)</option>
+                                <option value="+504">Honduras (+504)</option>
+                                <option value="+505">Nicaragua (+505)</option>
+                                <option value="+506">Costa Rica (+506)</option>
+                                <option value="+507">Panamá (+507)</option>
+                                
+                                <!-- Sudamérica -->
+                                <option value="+54">Argentina (+54)</option>
+                                <option value="+591">Bolivia (+591)</option>
+                                <option value="+55">Brasil (+55)</option>
+                                <option value="+56">Chile (+56)</option>
+                                <option value="+57">Colombia (+57)</option>
+                                <option value="+593">Ecuador (+593)</option>
+                                <option value="+595">Paraguay (+595)</option>
+                                <option value="+51">Perú (+51)</option>
+                                <option value="+598">Uruguay (+598)</option>
+                                <option value="+58">Venezuela (+58)</option>
+
+                                <!-- Europa -->
+                                <option value="+34">España (+34)</option>
+                                <option value="+33">Francia (+33)</option>
+                                <option value="+49">Alemania (+49)</option>
+                                <option value="+39">Italia (+39)</option>
+                                <option value="+44">Reino Unido (+44)</option>
+                                <option value="+351">Portugal (+351)</option>
+                                <option value="+41">Suiza (+41)</option>
+                                <option value="+31">Países Bajos (+31)</option>
+                                <option value="+32">Bélgica (+32)</option>
+                                <option value="+43">Austria (+43)</option>
+                                <option value="+48">Polonia (+48)</option>
+                                <option value="+353">Irlanda (+353)</option>
+                                <option value="+46">Suecia (+46)</option>
+                                <option value="+47">Noruega (+47)</option>
+                                <option value="+45">Dinamarca (+45)</option>
+                                <option value="+358">Finlandia (+358)</option>
+                                <option value="+30">Grecia (+30)</option>
+                                <option value="+420">República Checa (+420)</option>
+                                <option value="+36">Hungría (+36)</option>
+                                <option value="+40">Rumanía (+40)</option>
+                            </datalist>
+                            <input type="tel" id="client-phone" placeholder="Número de celular" maxlength="12" class="w-48 sm:w-56 bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-turq transition-colors" required>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- Ruta -->
                         <div>
@@ -665,93 +721,90 @@
 
     <!-- VENTANA MODAL DEL COMPROBANTE / VOUCHER (Oculto por defecto) -->
     <div id="modalVoucher" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto text-gray-800">
+        <!-- Contenedor principal ajustado como tarjeta compacta estilo voucher -->
+        <div class="bg-white w-full max-w-md rounded-3xl p-5 shadow-2xl max-h-[95vh] overflow-y-auto text-gray-800">
             
-            <!-- CONTENIDO DEL TICKET (Diseño tipo voucher exacto) -->
-            <div id="areaComprobante" class="bg-white border border-gray-200 rounded-2xl p-5 font-sans relative">
+            <!-- CONTENIDO DEL TICKET UNIFICADO (Voucher + Datos de Pago) -->
+            <div id="areaComprobante" class="bg-white border border-gray-200 rounded-2xl p-4 font-sans relative text-xs space-y-3">
                 
                 <!-- Cabecera del Voucher -->
-                <div class="flex justify-between items-center border-b-2 border-navy pb-4 mb-4">
+                <div class="flex justify-between items-center border-b-2 border-navy pb-3">
                     <div>
-                        <h3 class="font-heading font-extrabold text-xl text-navy m-0">Cancungoride</h3>
+                        <h3 class="font-heading font-extrabold text-lg text-navy m-0 leading-tight">Cancungoride</h3>
                         <span class="text-[10px] text-gray-500 uppercase tracking-widest block">Transporte & Riviera Maya</span>
                     </div>
                     <!-- Contenedor del Código QR -->
-                    <div id="codigoQR" class="w-16 h-16 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden"></div>
+                    <div id="codigoQR" class="w-14 h-14 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden shrink-0"></div>
                 </div>
 
                 <!-- Mensaje de Agradecimiento -->
-                <div class="text-center bg-turq/10 border border-turq/20 rounded-xl p-2.5 mb-4">
-                    <p class="text-xs font-bold text-navy m-0">¡Gracias por viajar con Cancungoride! 🌴✈️</p>
-                    <span class="text-[10px] text-gray-600 block mt-0.5">Tu traslado seguro en el Caribe Mexicano</span>
+                <div class="text-center bg-turq/10 border border-turq/20 rounded-xl p-2">
+                    <p class="font-bold text-navy m-0 text-xs">¡Gracias por viajar con Cancungoride! 🌴✈️</p>
+                    <span class="text-[10px] text-gray-600 block">Tu traslado seguro en el Caribe Mexicano</span>
                 </div>
 
-                <!-- Datos del Pasajero y Folio -->
-                <div class="grid grid-cols-2 gap-2 text-xs bg-gray-50 p-3 rounded-xl mb-4 border border-gray-100">
+                <!-- Datos del Pasajero y Folio (Compacto en Grid) -->
+                <div class="grid grid-cols-2 gap-2 bg-gray-50 p-2.5 rounded-xl border border-gray-100">
                     <div>
-                        <span class="block text-gray-500">Folio:</span>
+                        <span class="text-gray-500 block text-[10px]">Folio:</span>
                         <strong id="v-folio" class="text-navy">CGR-9428</strong>
-                        <span class="block text-gray-500 mt-2">Pasajero:</span>
+                        <span class="text-gray-500 block text-[10px] mt-1">Pasajero:</span>
                         <strong id="v-nombre" class="text-navy truncate block">Cliente</strong>
                     </div>
                     <div class="text-right">
-                        <span class="block text-gray-500">Conductor:</span>
+                        <span class="text-gray-500 block text-[10px]">Conductor:</span>
                         <strong class="text-gray-700">Asignado en Base</strong>
-                        <span class="block text-gray-500 mt-2">Vehículo:</span>
+                        <span class="text-gray-500 block text-[10px] mt-1">Vehículo:</span>
                         <strong id="v-vehiculo" class="text-gray-700">Van</strong>
                     </div>
                 </div>
 
                 <!-- Ruta y Fecha -->
-                <div class="text-xs mb-3 border-l-4 border-turq pl-3 space-y-1">
+                <div class="border-l-4 border-turq pl-2.5 space-y-0.5">
                     <p class="m-0 text-gray-600">📍 <strong class="text-navy">Origen:</strong> Aeropuerto de Cancún</p>
                     <p class="m-0 text-gray-600">🏁 <strong class="text-navy">Destino:</strong> <span id="v-ruta">Playa del Carmen</span></p>
                     <p class="m-0 text-gray-600">📅 <strong class="text-navy">Itinerario:</strong> <span id="v-fecha">--/--/----</span></p>
                 </div>
 
-                <!-- Notas / Vuelo / Hotel (Dinámico: se oculta si no hay notas) -->
-                <div id="v-notes-container" class="hidden text-xs mb-4 bg-amber-50/60 border border-amber-200 p-2.5 rounded-xl">
+                <!-- Notas / Vuelo / Hotel (Dinámico) -->
+                <div id="v-notes-container" class="hidden bg-amber-50/60 border border-amber-200 p-2 rounded-xl">
                     <p class="m-0 text-gray-700">✈️ <strong class="text-navy">Notas / Vuelo / Hotel:</strong> <span id="v-notas" class="italic">--</span></p>
                 </div>
 
                 <!-- Total y Estatus -->
-                <div class="flex justify-between items-center bg-gray-100 p-3 rounded-xl mb-4">
+                <div class="flex justify-between items-center bg-gray-100 p-2.5 rounded-xl">
                     <div>
-                        <span class="text-[10px] text-gray-500 uppercase font-bold block">Total / Anticipo</span>
-                        <strong id="v-precio" class="text-base text-navy font-extrabold">$1,399 MXN</strong>
+                        <span class="text-[9px] text-gray-500 uppercase font-bold block">Total / Anticipo</span>
+                        <strong id="v-precio" class="text-sm text-navy font-extrabold">$1,399 MXN</strong>
                     </div>
                     <div class="text-right">
-                        <span class="bg-turq text-white px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider block">Reserva Generada</span>
+                        <span class="bg-turq text-white px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider block">Reserva Generada</span>
                     </div>
                 </div>
 
-                <!-- Indicaciones de Abordaje y Recomendaciones -->
-                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[10px] text-gray-700 space-y-1.5 mb-2">
-                    <strong class="text-navy block uppercase tracking-wider mb-1">📋 Indicaciones de Abordaje:</strong>
-                    <p class="m-0">1. Al salir de la sala de llegadas, ignora a los módulos de tiempos compartidos.</p>
-                    <p class="m-0">2. Dirígete a la zona exterior designada para transporte pre-contratado.</p>
-                    <p class="m-0">3. Tu operador te estará esperando con un letrero con tu nombre y este código QR.</p>
-                    <p class="m-0">4. Conserve este comprobante y preséntalo al abordar o para aclaraciones.</p>
+                <!-- Datos Bancarios SPEI integrados de forma compacta en el comprobante -->
+                <div class="p-2.5 bg-turq-50 border border-turq/30 rounded-xl text-gray-700 space-y-0.5">
+                     <p class="font-bold text-navy text-[11px] mb-1"><i class="fa-solid fa-building-columns text-turq mr-1"></i> Datos para tu Pago (SPEI):</p>
+                     <p class="m-0 text-[11px]"><strong>Banco BBVA:</strong> 157 726 8699</p>
+                     <p class="m-0 text-[11px]"><strong>CLABE:</strong> <span class="text-navy font-mono font-bold">012 164 01577268699 8</span></p>
+                     <p class="m-0 text-[11px]"><strong>Beneficiario:</strong> Cancun Goride</p>
+                     <p class="text-[10px] text-gray-600 mt-1">* Envía tu comprobante al WhatsApp <strong class="text-navy">+52 998 225 7895</strong> indicando tu número de folio.</p>
+                </div>
+
+                <!-- Indicaciones Breves de Abordaje -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-2 text-[9px] text-gray-700 space-y-1">
+                    <strong class="text-navy block uppercase tracking-wider">📋 Indicaciones de Abordaje:</strong>
+                    <p class="m-0">1. Al salir de llegadas, ignora módulos de tiempos compartidos y sal al área exterior.</p>
+                    <p class="m-0">2. Tu operador te esperará con un letrero con tu nombre y este código QR.</p>
                 </div>
             </div>
 
-            <!-- Datos Bancarios SPEI en el Voucher -->
-            <div class="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-xl text-left text-sm text-gray-700">
-                 <p class="font-bold text-navy mb-1"><i class="fa-solid fa-building-columns text-turq mr-2"></i> Datos para tu Pago (SPEI):</p>
-                 <p><strong>Banco:</strong> BBVA: 157 726 8699</p>
-                 <p><strong>CLABE Interbancaria:</strong> <span class="text-navy font-mono font-bold">012 164 01577268699 8</span></p>
-                 <p><strong>Beneficiario:</strong> Cancun Goride</p>
-                 <p><strong>Transferencias:</strong> 4152-3146-8757-8339</p>
-                 <p><strong>WhatsApp:</strong> 998 225 7895</p>
-                 <p class="text-[11px] text-gray-500 mt-2">* Por favor, envía tu comprobante de pago por WhatsApp indicando tu número de folio.</p>
-</div>
-
             <!-- Botones de Acción en la Modal -->
-            <div class="mt-6 flex gap-3">
-                <button onclick="descargarPDF()" class="flex-1 bg-turq hover:bg-turq-dark text-white py-3 rounded-xl font-bold text-sm shadow-lg shadow-turq/30 transition-all flex items-center justify-center gap-2">
+            <div class="mt-4 flex gap-2">
+                <button onclick="descargarPDF()" class="flex-1 bg-turq hover:bg-turq-dark text-white py-2.5 rounded-xl font-bold text-xs shadow-md shadow-turq/30 transition-all flex items-center justify-center gap-1.5">
                     <i class="fa-solid fa-download"></i> Descargar PDF / Imprimir
                 </button>
-                <button onclick="cerrarModalVoucher()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-3 rounded-xl font-bold text-sm transition-colors">
+                <button onclick="cerrarModalVoucher()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition-colors">
                     ✕
                 </button>
             </div>
