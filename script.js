@@ -164,6 +164,8 @@ function sendToWhatsAppAdvanced(e) {
     e.preventDefault();
 
     const nameEl = document.getElementById('client-name');
+    const phonePrefixEl = document.getElementById('phone-prefix');
+    const phoneEl = document.getElementById('client-phone');
     const vehicleEl = document.getElementById('vehicle-select');
     const routeEl = document.getElementById('route-select');
     const tripTypeEl = document.getElementById('trip-type');
@@ -179,6 +181,10 @@ function sendToWhatsAppAdvanced(e) {
     if (!nameEl || !vehicleEl || !routeEl || !tripTypeEl || !dateEl) return;
 
     const name = nameEl.value.trim();
+    const phonePrefix = phonePrefixEl ? phonePrefixEl.value : '+52';
+    const phoneNum = phoneEl ? phoneEl.value.trim() : '';
+    const fullPhone = `${phonePrefix} ${phoneNum}`;
+
     const vehicleKey = vehicleEl.value;
     const routeKey = routeEl.value;
     const tripType = tripTypeEl.value;
@@ -193,6 +199,12 @@ function sendToWhatsAppAdvanced(e) {
     if (!name) {
         alert('Por favor ingresa tu nombre completo para la reserva.');
         nameEl.focus();
+        return;
+    }
+
+    if (!phoneNum) {
+        alert('Por favor ingresa tu número de teléfono / WhatsApp.');
+        if (phoneEl) phoneEl.focus();
         return;
     }
 
@@ -217,7 +229,7 @@ function sendToWhatsAppAdvanced(e) {
     };
 
     setInnerText('v-folio', folio);
-    setInnerText('v-nombre', name);
+    setInnerText('v-nombre', `${name} (${fullPhone})`);
     setInnerText('v-vehiculo', vehicleKey === 'Sedan' ? 'Sedán BAIC' : 'Toyota Hiace');
     setInnerText('v-ruta', routeName);
     
@@ -249,7 +261,7 @@ function sendToWhatsAppAdvanced(e) {
     const qrContainer = document.getElementById('codigoQR');
     if (qrContainer) {
         qrContainer.innerHTML = '';
-        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${returnDate ? '|Regreso:'+returnDate : ''}|Total:$${finalPrice}`;
+        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Tel:${fullPhone}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${returnDate ? '|Regreso:'+returnDate : ''}|Total:$${finalPrice}`;
         
         if (typeof QRCode !== 'undefined') {
             try {
@@ -269,10 +281,11 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Envío automático de la información al NUEVO Webhook de Make
+    // 3. Envío automático de la información a Make (Webhook)
     const datosReserva = {
         folio: folio,
         name: name,
+        phone: fullPhone,
         vehicleName: vehicleName,
         routeName: routeName,
         tripType: tripType,
@@ -285,7 +298,7 @@ function sendToWhatsAppAdvanced(e) {
         hotel: hotel
     };
 
-    fetch('https://hook.us2.make.com/wkuypywfirfk7dme2iq15jsjpuyq0vdn', {
+    fetch('https://hook.us2.make.com/kc1u5a6ofhfg0gfdq7j4ttrw5oezse5d', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -303,6 +316,8 @@ function sendToWhatsAppAdvanced(e) {
     // Limpieza segura de campos de texto del formulario después de procesar
     setTimeout(() => {
         if (nameEl) nameEl.value = '';
+        if (phoneEl) phoneEl.value = '';
+        if (phonePrefixEl) phonePrefixEl.value = '+52';
         if (airlineEl) airlineEl.value = '';
         if (flightEl) flightEl.value = '';
         if (hotelEl) hotelEl.value = '';
