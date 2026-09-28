@@ -281,11 +281,11 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Envío automático de la información a Make (Webhook)
+    // 3. Envío automático de la información a Make (Webhook con el teléfono incluido)
     const datosReserva = {
         folio: folio,
         name: name,
-        phone: fullPhone,
+        phone: fullPhone, // <--- Aquí se incluye correctamente el teléfono con su prefijo
         vehicleName: vehicleName,
         routeName: routeName,
         tripType: tripType,
