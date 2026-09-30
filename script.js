@@ -397,3 +397,29 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// --- CONTROLADOR DE FLECHAS PARA EL CARRUSEL DE FLOTA ---
+document.addEventListener("DOMContentLoaded", () => {
+    const flotaSlider = document.getElementById('flota-slider');
+    const slideLeftBtn = document.getElementById('slide-left-btn');
+    const slideRightBtn = document.getElementById('slide-right-btn');
+
+    if (flotaSlider && slideLeftBtn && slideRightBtn) {
+        // Cantidad de acercamiento o desplazamiento al hacer clic en las flechas
+        const scrollAmount = 450; 
+
+        slideLeftBtn.addEventListener('click', () => {
+            flotaSlider.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        slideRightBtn.addEventListener('click', () => {
+            flotaSlider.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
