@@ -75,3 +75,33 @@
 #flota-slider::-webkit-scrollbar-thumb:hover {
     background: #00A8B5;
 }
+
+/* Estilos para el selector de prefijos telefónicos con banderas en el formulario */
+.country-select-wrapper select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3path stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25em 1.25em;
+    padding-right: 2rem;
+    appearance: none;
+} /* <-- ¡Faltaba cerrar esta llave aquí para que funcionara lo demás! */
+
+/* Estilos personalizados para la barra de desplazamiento de la flota */
+#flota-slider::-webkit-scrollbar {
+    height: 8px; /* Altura de la barra horizontal */
+}
+
+#flota-slider::-webkit-scrollbar-track {
+    background: #f1f5f9; /* Color de fondo del riel (gris muy claro) */
+    border-radius: 9999px;
+    margin: 0 1rem;
+}
+
+#flota-slider::-webkit-scrollbar-thumb {
+    background: #cbd5e1; /* Color de la barrita que se mueve */
+    border-radius: 9999px;
+}
+
+#flota-slider::-webkit-scrollbar-thumb:hover {
+    background: #00A8B5; /* Color turquesa al pasar el cursor */
+}    
