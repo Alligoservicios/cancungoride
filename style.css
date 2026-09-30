@@ -103,5 +103,5 @@
 }
 
 #flota-slider::-webkit-scrollbar-thumb:hover {
-    background: #00A8B5; /* Color turquesa al pasar el cursor */
-}    
+    background: #00A8B5; /* Color cuando pasas el mouse por encima (tu color turquesa) */
+} 
