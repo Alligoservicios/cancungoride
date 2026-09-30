@@ -55,3 +55,23 @@
     background-size: 1.25em 1.25em;
     padding-right: 2rem;
     appearance: none;
+
+    /* Estilos personalizados para la barra de desplazamiento de la flota */
+#flota-slider::-webkit-scrollbar {
+    height: 8px; /* Altura de la barra horizontal */
+}
+
+#flota-slider::-webkit-scrollbar-track {
+    background: #f1f5f9; /* Color de fondo del riel (gris muy claro) */
+    border-radius: 9999px;
+    margin: 0 1rem;
+}
+
+#flota-slider::-webkit-scrollbar-thumb {
+    background: #cbd5e1; /* Color de la barrita que se mueve */
+    border-radius: 9999px;
+}
+
+#flota-slider::-webkit-scrollbar-thumb:hover {
+    background: #00A8B5; /* Color cuando pasas el mouse por encima (tu color turquesa) */
+}
