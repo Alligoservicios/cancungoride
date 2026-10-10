@@ -60,30 +60,114 @@ function toggleReturnDate() {
     }
 }
 
-// Precios Matrix (en MXN)
+// Control de campos para Ruta Personalizada ("Otro")
+function handleRouteChange() {
+    const routeSelect = document.getElementById('route-select');
+    const customContainer = document.getElementById('custom-route-container');
+    const customOrigin = document.getElementById('custom-origin');
+    const customDestination = document.getElementById('custom-destination');
+
+    if (!routeSelect || !customContainer) return;
+
+    if (routeSelect.value === 'otro') {
+        customContainer.classList.remove('hidden');
+        if (customOrigin) customOrigin.required = true;
+        if (customDestination) customDestination.required = true;
+    } else {
+        customContainer.classList.add('hidden');
+        if (customOrigin) {
+            customOrigin.value = '';
+            customOrigin.required = false;
+        }
+        if (customDestination) {
+            customDestination.value = '';
+            customDestination.required = false;
+        }
+    }
+}
+
+// Precios Matrix actualizados para toda la flota (en MXN) - Incluyendo Aeropuerto de Cancún y Aeropuerto de Tulum
 const priceTable = {
     Sedan: {
         Cancun: 499,
         CostaMujeres: 899,
         PlayaDelCarmen: 1299,
         Akumal: 1399,
-        Tulum: 1800
+        Tulum: 1800,
+        TQO_TulumZH: 1400,
+        TQO_TulumCentro: 1500,
+        TQO_Akumal: 1600,
+        TQO_Playa: 2000,
+        TQO_Cancun: 2700,
+        TQO_CostaMujeres: 3100
     },
     Van: {
         Cancun: 599,
         CostaMujeres: 999,
         PlayaDelCarmen: 1399,
         Akumal: 1499,
-        Tulum: 2000
+        Tulum: 2000,
+        TQO_TulumZH: 1400,
+        TQO_TulumCentro: 1500,
+        TQO_Akumal: 1600,
+        TQO_Playa: 2000,
+        TQO_Cancun: 2700,
+        TQO_CostaMujeres: 3100
+    },
+    Suburban: {
+        Cancun: 1100,
+        CostaMujeres: 1300,
+        PlayaDelCarmen: 1500,
+        Akumal: 1900,
+        Tulum: 2300,
+        TQO_TulumZH: 1400,
+        TQO_TulumCentro: 1600,
+        TQO_Akumal: 1700,
+        TQO_Playa: 2200,
+        TQO_Cancun: 3100,
+        TQO_CostaMujeres: 3500
+    },
+    Trafic: {
+        Cancun: 599,
+        CostaMujeres: 999,
+        PlayaDelCarmen: 1399,
+        Akumal: 1499,
+        Tulum: 2000,
+        TQO_TulumZH: 1400,
+        TQO_TulumCentro: 1500,
+        TQO_Akumal: 1600,
+        TQO_Playa: 2000,
+        TQO_Cancun: 2700,
+        TQO_CostaMujeres: 3100
+    },
+    Sprinter: {
+        Cancun: 1100,
+        CostaMujeres: 1300,
+        PlayaDelCarmen: 1500,
+        Akumal: 1900,
+        Tulum: 2300,
+        TQO_TulumZH: 1400,
+        TQO_TulumCentro: 1600,
+        TQO_Akumal: 1700,
+        TQO_Playa: 2200,
+        TQO_Cancun: 3100,
+        TQO_CostaMujeres: 3500
     }
 };
 
 const routeNames = {
-    Cancun: "Cancún Centro / Zona Hotelera",
-    CostaMujeres: "Costa Mujeres",
-    PlayaDelCarmen: "Playa del Carmen",
-    Akumal: "Akumal",
-    Tulum: "Tulum"
+    Cancun: "Aeropuerto Cancún ⇄ Cancún Centro / Zona Hotelera",
+    CostaMujeres: "Aeropuerto Cancún ⇄ Costa Mujeres",
+    PlayaDelCarmen: "Aeropuerto Cancún ⇄ Playa del Carmen",
+    Akumal: "Aeropuerto Cancún ⇄ Akumal",
+    Tulum: "Aeropuerto Cancún ⇄ Tulum",
+    TQO_TulumZH: "Aeropuerto Tulum ⇄ Tulum Zona Hotelera",
+    TQO_TulumCentro: "Aeropuerto Tulum ⇄ Tulum Centro",
+    TQO_Akumal: "Aeropuerto Tulum ⇄ Akumal",
+    TQO_Playa: "Aeropuerto Tulum ⇄ Playa del Carmen",
+    TQO_Cancun: "Aeropuerto Tulum ⇄ Cancún Zona Hotelera",
+    TQO_CostaMujeres: "Aeropuerto Tulum ⇄ Costa Mujeres",
+    otro: "Ruta Personalizada"
 };
 
 // Calculate Price Function
@@ -100,6 +184,21 @@ function calculatePrice() {
     const route = routeEl.value;
     const tripType = tripTypeEl.value;
 
+    let vehicleLabel = 'Sedán BAIC U5 Plus (1-4 pax)';
+    if (vehicle === 'Van') vehicleLabel = 'Toyota Hiace / Van (1-10 pax)';
+    if (vehicle === 'Suburban') vehicleLabel = 'Chevrolet Suburban (1-6 pax)';
+    if (vehicle === 'Trafic') vehicleLabel = 'Renault Trafic (Grupos)';
+    if (vehicle === 'Sprinter') vehicleLabel = 'Mercedes-Benz Sprinter (Grupos)';
+
+    let tripLabel = tripType === 'Redondo' ? 'Redondo (Round Trip)' : 'Sencillo (One Way)';
+
+    // Si selecciona "Otro", manejamos un precio base estimado o aviso de cotización
+    if (route === 'otro') {
+        estimatedPriceEl.innerText = "A cotizar";
+        priceDescEl.innerText = `${vehicleLabel} • Ruta Personalizada (${tripLabel})`;
+        return;
+    }
+
     // Validación de seguridad por si alguna clave no existe en la matriz
     if (!priceTable[vehicle] || priceTable[vehicle][route] === undefined) return;
 
@@ -107,17 +206,15 @@ function calculatePrice() {
     let multiplier = tripType === 'Redondo' ? 2 : 1;
     let finalPrice = basePrice * multiplier;
 
-    let vehicleLabel = vehicle === 'Sedan' ? 'Sedán BAIC U5 Plus (1-3 pax)' : 'Toyota Hiace Van (1-10 pax)';
-    let tripLabel = tripType === 'Redondo' ? 'Redondo (Round Trip)' : 'Sencillo (One Way)';
-
     estimatedPriceEl.innerText = `$${finalPrice.toLocaleString()} MXN`;
-    priceDescEl.innerText = `${vehicleLabel} • Aeropuerto ⇄ ${routeNames[route] || route} (${tripLabel})`;
+    priceDescEl.innerText = `${vehicleLabel} • ${routeNames[route] || route} (${tripLabel})`;
 }
 
 // Run initial calculation on load
 window.onload = function() {
     calculatePrice();
     toggleReturnDate();
+    handleRouteChange();
 };
 
 // Quick quote from hero section
@@ -137,6 +234,7 @@ function quickQuoteHero(e) {
     if (vehicleSelect && routeSelect) {
         vehicleSelect.value = vehicle;
         routeSelect.value = ruta;
+        handleRouteChange();
         calculatePrice();
     }
 
@@ -151,6 +249,7 @@ function selectRouteAndScroll(routeKey) {
     const routeSelect = document.getElementById('route-select');
     if (routeSelect) {
         routeSelect.value = routeKey;
+        handleRouteChange();
         calculatePrice();
     }
     const reservarSec = document.getElementById('reservar');
@@ -173,10 +272,12 @@ function sendToWhatsAppAdvanced(e) {
     const returnDateEl = document.getElementById('return-date');
     const passengersEl = document.getElementById('passengers-count');
     
-    // Captura de los campos específicos de vuelo y hotel
+    // Captura de campos de vuelo, hotel y ruta personalizada
     const airlineEl = document.getElementById('travel-airline');
     const flightEl = document.getElementById('travel-flight');
     const hotelEl = document.getElementById('travel-hotel');
+    const customOriginEl = document.getElementById('custom-origin');
+    const customDestinationEl = document.getElementById('custom-destination');
 
     if (!nameEl || !vehicleEl || !routeEl || !tripTypeEl || !dateEl) return;
 
@@ -195,6 +296,8 @@ function sendToWhatsAppAdvanced(e) {
     const airline = airlineEl ? airlineEl.value.trim() : '';
     const flight = flightEl ? flightEl.value.trim() : '';
     const hotel = hotelEl ? hotelEl.value.trim() : '';
+    const customOrigin = customOriginEl ? customOriginEl.value.trim() : '';
+    const customDestination = customDestinationEl ? customDestinationEl.value.trim() : '';
 
     if (!name) {
         alert('Por favor ingresa tu nombre completo para la reserva.');
@@ -214,12 +317,32 @@ function sendToWhatsAppAdvanced(e) {
         return;
     }
 
-    let basePrice = priceTable[vehicleKey][routeKey] || 0;
-    let multiplier = tripType === 'Redondo' ? 2 : 1;
-    let finalPrice = basePrice * multiplier;
+    // Validación si eligió ruta personalizada
+    if (routeKey === 'otro' && (!customOrigin || !customDestination)) {
+        alert('Por favor ingresa tu Origen y Destino personalizado.');
+        if (customOrigin && !customOrigin.value) customOrigin.focus();
+        return;
+    }
 
-    let vehicleName = vehicleKey === 'Sedan' ? 'Sedán BAIC U5 Plus (Beijing)' : 'Toyota Hiace / Van';
-    let routeName = routeNames[routeKey] || routeKey;
+    let finalPriceText = "$ A cotizar";
+    let numericPrice = 0;
+
+    if (routeKey === 'otro') {
+        finalPriceText = "Cotización por WhatsApp";
+    } else {
+        let basePrice = priceTable[vehicleKey][routeKey] || 0;
+        let multiplier = tripType === 'Redondo' ? 2 : 1;
+        numericPrice = basePrice * multiplier;
+        finalPriceText = '$' + numericPrice.toLocaleString() + ' MXN';
+    }
+
+    let vehicleName = 'Sedán BAIC U5 Plus';
+    if (vehicleKey === 'Van') vehicleName = 'Toyota Hiace / Van';
+    if (vehicleKey === 'Suburban') vehicleName = 'Chevrolet Suburban';
+    if (vehicleKey === 'Trafic') vehicleName = 'Renault Trafic';
+    if (vehicleKey === 'Sprinter') vehicleName = 'Mercedes-Benz Sprinter';
+
+    let routeName = routeKey === 'otro' ? `Origen: ${customOrigin} ➔ Destino: ${customDestination}` : (routeNames[routeKey] || routeKey);
     let folio = 'CGR-' + Math.floor(1000 + Math.random() * 9000);
 
     // 1. Rellenar los datos en el Voucher HTML de forma segura
@@ -230,7 +353,7 @@ function sendToWhatsAppAdvanced(e) {
 
     setInnerText('v-folio', folio);
     setInnerText('v-nombre', `${name} (${fullPhone})`);
-    setInnerText('v-vehiculo', vehicleKey === 'Sedan' ? 'Sedán BAIC' : 'Toyota Hiace');
+    setInnerText('v-vehiculo', vehicleName);
     setInnerText('v-ruta', routeName);
     
     let fechaTexto = 'Ida: ' + date;
@@ -239,13 +362,16 @@ function sendToWhatsAppAdvanced(e) {
     }
     fechaTexto += ' (' + tripType + '; ' + passengers + ' pax)';
     setInnerText('v-fecha', fechaTexto);
-    setInnerText('v-precio', '$' + finalPrice.toLocaleString() + ' MXN');
+    setInnerText('v-precio', finalPriceText);
 
-    // 1.1 Mostrar u ocultar detalles de Vuelo/Hotel en el Voucher de manera dinámica
+    // 1.1 Mostrar u ocultar detalles de Vuelo/Hotel/Ruta libre en el Voucher de manera dinámica
     const vNotesContainer = document.getElementById('v-notes-container');
     const vNotasSpan = document.getElementById('v-notas');
     
     let combinedNotes = [];
+    if (routeKey === 'otro') {
+        combinedNotes.push(`Trayecto Libre - Origen: ${customOrigin} | Destino: ${customDestination}`);
+    }
     if (airline) combinedNotes.push(`Aerolínea: ${airline}`);
     if (flight) combinedNotes.push(`Vuelo: ${flight}`);
     if (hotel) combinedNotes.push(`Hotel/Destino: ${hotel}`);
@@ -261,7 +387,7 @@ function sendToWhatsAppAdvanced(e) {
     const qrContainer = document.getElementById('codigoQR');
     if (qrContainer) {
         qrContainer.innerHTML = '';
-        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Tel:${fullPhone}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${returnDate ? '|Regreso:'+returnDate : ''}|Total:$${finalPrice}`;
+        const qrData = `CANCUNGORIDE|Folio:${folio}|Cliente:${name}|Tel:${fullPhone}|Ruta:${routeName}|Tipo:${tripType}|Ida:${date}${returnDate ? '|Regreso:'+returnDate : ''}|Total:${finalPriceText}`;
         
         if (typeof QRCode !== 'undefined') {
             try {
@@ -281,18 +407,20 @@ function sendToWhatsAppAdvanced(e) {
         }
     }
 
-    // 3. Envío automático de la información a Make (Webhook con el teléfono incluido)
+    // 3. Envío automático de la información a Make (Webhook)
     const datosReserva = {
         folio: folio,
         name: name,
-        phone: fullPhone, // <--- Aquí se incluye correctamente el teléfono con su prefijo
+        phone: fullPhone,
         vehicleName: vehicleName,
         routeName: routeName,
+        customOrigin: customOrigin,
+        customDestination: customDestination,
         tripType: tripType,
         date: date,
         returnDate: returnDate,
         passengers: passengers,
-        finalPrice: finalPrice,
+        finalPrice: finalPriceText,
         airline: airline,
         flight: flight,
         hotel: hotel
@@ -321,10 +449,16 @@ function sendToWhatsAppAdvanced(e) {
         if (airlineEl) airlineEl.value = '';
         if (flightEl) flightEl.value = '';
         if (hotelEl) hotelEl.value = '';
+        if (customOriginEl) customOriginEl.value = '';
+        if (customDestinationEl) customDestinationEl.value = '';
         if (passengersEl) passengersEl.value = '2';
         if (tripTypeEl) {
             tripTypeEl.value = 'Sencillo';
             toggleReturnDate();
+        }
+        if (routeEl) {
+            routeEl.value = 'PlayaDelCarmen';
+            handleRouteChange();
         }
         
         if (dateEl) {
@@ -397,3 +531,40 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// ==========================================
+// Control de Botones de Flechas (Izquierda / Derecha) para la Flota
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById('flota-slider');
+    const btnLeft = document.getElementById('slide-left-btn');
+    const btnRight = document.getElementById('slide-right-btn');
+
+    if (!slider) return;
+
+    const scrollAmount = 440;
+
+    if (btnRight) {
+        btnRight.addEventListener('click', () => {
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    }
+
+    if (btnLeft) {
+        btnLeft.addEventListener('click', () => {
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+    }
+});
+
+// Función para cambiar la imagen de la Suburban según el color seleccionado
+function changeSuburbanColor(color) {
+    const suburbanImg = document.getElementById('suburnann');
+    if (!suburbanImg) return;
+
+    if (color === 'negro') {
+        suburbanImg.src = 'suburnann.webp'; 
+    } else {
+        suburbanImg.src = 'suburban.webp';
+    }
+}
