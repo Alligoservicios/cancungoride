@@ -342,6 +342,23 @@ function sendToWhatsAppAdvanced(e) {
     if (vehicleKey === 'Trafic') vehicleName = 'Renault Trafic';
     if (vehicleKey === 'Sprinter') vehicleName = 'Mercedes-Benz Sprinter';
 
+    // ==========================================
+    // MANEJO INTELIGENTE DE ORIGEN Y DESTINO
+    // ==========================================
+    let displayOrigen = "Aeropuerto de Cancún";
+    let displayDestino = routeNames[routeKey] || routeKey;
+
+    if (routeKey.startsWith('TQO_')) {
+        displayOrigen = "Aeropuerto de Tulum (TQO)";
+        let parts = routeNames[routeKey].split('⇄');
+        if (parts.length > 1) {
+            displayDestino = parts[1].trim();
+        }
+    } else if (routeKey === 'otro') {
+        displayOrigen = customOrigin;
+        displayDestino = customDestination;
+    }
+
     let routeName = routeKey === 'otro' ? `Origen: ${customOrigin} ➔ Destino: ${customDestination}` : (routeNames[routeKey] || routeKey);
     let folio = 'CGR-' + Math.floor(1000 + Math.random() * 9000);
 
@@ -354,7 +371,10 @@ function sendToWhatsAppAdvanced(e) {
     setInnerText('v-folio', folio);
     setInnerText('v-nombre', `${name} (${fullPhone})`);
     setInnerText('v-vehiculo', vehicleName);
-    setInnerText('v-ruta', routeName);
+    
+    // Inyectar el origen y destino dinámicos correctamente separados
+    setInnerText('v-origen', displayOrigen);
+    setInnerText('v-destino', displayDestino);
     
     let fechaTexto = 'Ida: ' + date;
     if (tripType === 'Redondo' && returnDate) {
