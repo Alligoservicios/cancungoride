@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Cancungoride</title>
+
+<link rel="icon" type="image/png" href="favicon.webp">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for icons -->
@@ -49,14 +53,8 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="#inicio" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-turq to-gold flex items-center justify-center text-navy font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-van-shuttle text-white"></i>
-                </div>
-                <div>
-                    <span class="font-heading font-extrabold text-xl tracking-wide block leading-tight text-white">Cancungoride</span>
-                    <span class="text-xs text-turq font-medium tracking-widest uppercase">Cancún & Riviera Maya</span>
-                </div>
+            <a href="#inicio" class="flex items-center group">
+                <img src="logo.webp" alt="Cancungoride - Cancún & Riviera Maya" class="h-18 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105">
             </a>
 
             <!-- Desktop Menu -->
@@ -70,6 +68,7 @@
 
             <!-- CTA Button Desktop -->
             <div class="hidden md:flex items-center gap-4">
+                <div id="google_translate_element" class="inline-block"></div>
                 <a href="#reservar" class="bg-turq hover:bg-turq-dark text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-turq/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
                     <i class="fa-regular fa-calendar-check"></i> Reservar Viaje
                 </a>
@@ -185,212 +184,223 @@
 <section id="flota" class="py-20 bg-white overflow-hidden">
     <div class="max-w-[87rem] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Cabecera de la sección con los botones de control -->
+        <!-- Cabecera de la sección -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div class="text-center md:text-left max-w-3xl mx-auto md:mx-0">
                 <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Comodidad Garantizada</span>
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Nuestra Flota de Vehículos</h2>
                 <p class="text-gray-600 mt-2">Unidades completamente equipadas, aire acondicionado impecable y choferes profesionales para tu traslado seguro.</p>
-            </div>   
-        </div>
-
-        <!-- Contenedor del Carrusel con su ID y la animación sutil aplicada -->
-        <div id="flota-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 no-scrollbar scroll-smooth scroll-hint-anim">
+            </div>
             
-            <!-- Contenedor del Carrusel con la barra de desplazamiento visible -->
-            <div id="flota-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 scroll-smooth scroll-hint-anim">
-                
-            <!-- Vehicle 1: Sedan -->
-            <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="s.webp" alt="Sedán BAIC U5 Plus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Sedan+BAIC+U5+Plus'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        1 a 4 Pasajeros
-                    </div>
-                    <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
-                        Sedán BAIC U5 Plus <span class="text-gold text-sm font-normal block">Insignia Beijing</span>
-                    </span>
-                </div>
-                <div class="p-8 space-y-4">
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Ideal para parejas, viajeros solitarios o pequeños grupos de hasta 3 pasajeros con equipaje moderado. Confort, elegancia y excelente rendimiento para trayectos rápidos.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 4 Pasajeros</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-suitcase text-turq"></i> <span>Equipaje estándar</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Botones de flechas para PC -->
+            <div class="hidden md:flex items-center gap-3">
+                <button id="slide-left-btn" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-turq hover:text-white text-navy flex items-center justify-center transition-all shadow-md">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button id="slide-right-btn" class="w-12 h-12 rounded-full bg-gray-100 hover:bg-turq hover:text-white text-navy flex items-center justify-center transition-all shadow-md">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
-
-            <!-- Vehicle 2: Toyota Hiace -->
-            <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="t.webp" alt="Toyota Hiace Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Toyota+Hiace+Van'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-gold text-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        1 a 10 Pasajeros
-                    </div>
-                    <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
-                        Toyota Hiace / Van <span class="text-turq text-sm font-normal block">Espacio y Comodidad Familiar</span>
-                    </span>
-                </div>
-                <div class="p-8 space-y-4">
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Furgoneta (van) espaciosa y robusta perfecta para familias grandes, grupos de amigos o viajes de negocios que transportan equipaje abundante con total comodidad.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 10 Pasajeros</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-boxes-stacked text-turq"></i> <span>Amplio maletero</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-snowflake text-turq"></i> <span>Climatización total</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vehicle 3: Chevrolet Suburban -->
-            <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="suburban.webp" alt="Chevrolet Suburban" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Chevrolet+Suburban'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        1 a 6 Pasajeros
-                    </div>
-                    <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
-                        Chevrolet Suburban <span class="text-gold text-sm font-normal block">Lujo y Elegancia Ejecutiva</span>
-                    </span>
-                </div>
-                <div class="p-8 space-y-4">
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Máximo confort, presencia imponente y amplio espacio interior. Ideal para traslados VIP, ejecutivos o familias que buscan una experiencia de categoría superior.
-                    </p>
-                    <!-- Selector de Color -->
-                    <div class="bg-white p-3 rounded-2xl border border-gray-200 flex items-center justify-between">
-                        <span class="text-xs font-bold text-navy uppercase tracking-wider">Color disponible:</span>
-                        <div class="flex items-center gap-3">
-                            <label class="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer font-medium">
-                                <input type="radio" name="suburban-color" value="blanco" checked class="text-turq focus:ring-turq"> Blanco
-                            </label>
-                            <label class="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer font-medium">
-                                <input type="radio" name="suburban-color" value="negro" class="text-turq focus:ring-turq"> Negro
-                            </label>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 6 Pasajeros</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-suitcase text-turq"></i> <span>Equipaje abundante</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-snowflake text-turq"></i> <span>Climatización dual</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vehicle 4: Mercedes-Benz Sprinter -->
-            <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="sprinter.webp" alt="Mercedes-Benz Sprinter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Mercedes-Benz+Sprinter'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-gold text-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Grupos Numerosos
-                    </div>
-                    <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
-                        Mercedes-Benz Sprinter <span class="text-turq text-sm font-normal block">Confort Premium Colectivo</span>
-                    </span>
-                </div>
-                <div class="p-8 space-y-4">
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Diseñada para grandes grupos, excursiones o traslados corporativos masivos. Cuenta con asientos reclinables de alta comodidad y un espacio excepcional para equipaje.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-user-group text-turq"></i> <span>Alta capacidad</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-boxes-stacked text-turq"></i> <span>Maletero gigante</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado pro</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vehicle 5: Renault Trafic -->
-            <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="Renault Trafic.webp" alt="Renault Trafic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Renault+Trafic'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Grupos y Familias
-                    </div>
-                    <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
-                        Renault Trafic <span class="text-gold text-sm font-normal block">Versatilidad y Espacio Eficiente</span>
-                    </span>
-                </div>
-                <div class="p-8 space-y-4">
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Una opción moderna, cómoda y sumamente versátil para el traslado de grupos medianos. Ofrece excelente estabilidad, climatización impecable y gran comodidad en trayectos largos.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-user-group text-turq"></i> <span>Capacidad optimizada</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-suitcase text-turq"></i> <span>Amplio espacio</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
+        <!-- CONTENEDOR DE SCROLL -->
+        <div id="flota-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 scroll-smooth">
+            <div class="flex gap-6 shrink-0 scroll-hint-anim">
+
+                <!-- Vehicle 1: Sedan -->
+                <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="s.webp" alt="Sedán BAIC U5 Plus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Sedan+BAIC+U5+Plus'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            1 a 4 Pasajeros
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Sedán BAIC U5 Plus <span class="text-gold text-sm font-normal block">Insignia Beijing</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Ideal for parejas, viajeros solitarios o pequeños grupos de hasta 3 pasajeros con equipaje moderado. Confort, elegancia y excelente rendimiento para trayectos rápidos.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 4 Pasajeros</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-suitcase text-turq"></i> <span>Equipaje estándar</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2: Toyota Hiace -->
+                <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="t.webp" alt="Toyota Hiace Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Toyota+Hiace+Van'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-gold text-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            1 a 10 Pasajeros
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Toyota Hiace / Van <span class="text-turq text-sm font-normal block">Espacio y Comodidad Familiar</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Furgoneta (van) espaciosa y robusta perfecta para familias grandes, grupos de amigos o viajes de negocios que transportan equipaje abundante con total comodidad.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 10 Pasajeros</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-boxes-stacked text-turq"></i> <span>Amplio maletero</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Climatización total</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3: Chevrolet Suburban -->
+                <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img id="suburnann" src="suburban.webp" alt="Chevrolet Suburban" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Chevrolet+Suburban'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            1 a 6 Pasajeros
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Chevrolet Suburban <span class="text-gold text-sm font-normal block">Lujo y Elegancia Ejecutiva</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Máximo confort, presencia imponente y amplio espacio interior. Ideal para traslados VIP, ejecutivos o familias que buscan una experiencia de categoría superior.
+                        </p>
+                        <div class="bg-white p-3 rounded-2xl border border-gray-200 flex items-center justify-between">
+                            <span class="text-xs font-bold text-navy uppercase tracking-wider">Color disponible:</span>
+                            <div class="flex items-center gap-3">
+                                <label class="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer font-medium">
+                                    <input type="radio" name="suburban-color" value="blanco" checked class="text-turq focus:ring-turq" onchange="changeSuburbanColor('blanco')"> Blanco
+                                </label>
+                                <label class="flex items-center gap-1.5 text-xs text-gray-700 cursor-pointer font-medium">
+                                    <input type="radio" name="suburban-color" value="negro" class="text-turq focus:ring-turq" onchange="changeSuburbanColor('negro')"> Negro
+                                </label>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>1 a 6 Pasajeros</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-suitcase text-turq"></i> <span>Equipaje abundante</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Climatización dual</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 4: Mercedes-Benz Sprinter -->
+                <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="sprinter.webp" alt="Mercedes-Benz Sprinter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Mercedes-Benz+Sprinter'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-gold text-navy px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            Grupos Numerosos
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Mercedes-Benz Sprinter <span class="text-turq text-sm font-normal block">Confort Premium Colectivo</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Diseñada para grandes grupos, excursiones o traslados corporativos masivos. Cuenta con asientos reclinables de alta comodidad y un espacio excepcional para equipaje.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>Alta capacidad</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-boxes-stacked text-turq"></i> <span>Maletero gigante</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado pro</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 5: Renault Trafic -->
+                <div class="w-[85vw] sm:w-[420px] lg:w-[420px] shrink-0 snap-center bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="Renault Trafic.webp" alt="Renault Trafic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/00A8B5/ffffff?text=Renault+Trafic'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute top-4 left-4 bg-turq text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            Grupos y Familias
+                        </div>
+                        <span class="absolute bottom-4 left-4 text-white font-heading font-bold text-2xl">
+                            Renault Trafic <span class="text-gold text-sm font-normal block">Versatilidad y Espacio Eficiente</span>
+                        </span>
+                    </div>
+                    <div class="p-8 space-y-4">
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Una opción moderna, cómoda y sumamente versátil para el traslado de grupos medianos. Ofrece excelente estabilidad, climatización impecable y gran comodidad en trayectos largos.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-user-group text-turq"></i> <span>Capacidad optimizada</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-suitcase text-turq"></i> <span>Amplio espacio</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-snowflake text-turq"></i> <span>Aire acondicionado</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-700">
+                                <i class="fa-solid fa-shield-halved text-turq"></i> <span>Seguro de viajero</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </section>
 
     <!-- Rutas y Tarifas Section -->
     <section id="tarifas" class="py-20 bg-gray-100/70 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Bloque 1: Aeropuerto de Cancún -->
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Transparencia Total</span>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Rutas y Tarifas Oficiales</h2>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-navy mt-3">Rutas y Tarifas Oficiales (Aeropuerto de Cancún)</h2>
                 <p class="text-gray-600 mt-2">Precios fijos por vehículo para salidas desde el Aeropuerto de Cancún y de regreso. Sin cobros sorpresa.</p>
             </div>
 
-            <!-- Contenedor: Carrusel horizontal en celular, Grid adaptativo en PC -->
+            <!-- Contenedor CUN: Carrusel horizontal en celular, Grid adaptativo en PC -->
             <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 md:px-0 no-scrollbar scroll-smooth scroll-hint-anim">
                 
                 <!-- Route 1: Cancun -->
@@ -410,6 +420,18 @@
                         <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
                             <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
                             <span class="font-heading font-extrabold text-xl text-turq-dark">$599 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Chevrolet Suburban (1-6 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,100 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Renault Trafic (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$599 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Mercedes Sprinter (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,100 <span class="text-xs font-normal text-gray-500">MXN</span></span>
                         </div>
                         <button onclick="selectRouteAndScroll('Cancun')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
                             Reservar Ruta
@@ -435,6 +457,18 @@
                             <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
                             <span class="font-heading font-extrabold text-xl text-turq-dark">$999 <span class="text-xs font-normal text-gray-500">MXN</span></span>
                         </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Chevrolet Suburban (1-6 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,300 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Renault Trafic (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$999 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Mercedes Sprinter (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,300 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
                         <button onclick="selectRouteAndScroll('CostaMujeres')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
                             Reservar Ruta
                         </button>
@@ -458,6 +492,18 @@
                         <div class="bg-turq-light/60 p-3 rounded-xl border border-turq/20">
                             <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
                             <span class="font-heading font-extrabold text-xl text-turq-dark">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Chevrolet Suburban (1-6 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,500 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Renault Trafic (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,399 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Mercedes Sprinter (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,500 <span class="text-xs font-normal text-gray-500">MXN</span></span>
                         </div>
                         <button onclick="selectRouteAndScroll('PlayaDelCarmen')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
                             Reservar Ruta
@@ -483,6 +529,18 @@
                             <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
                             <span class="font-heading font-extrabold text-xl text-turq-dark">$1,499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
                         </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Chevrolet Suburban (1-6 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,900 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Renault Trafic (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,499 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Mercedes Sprinter (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$1,900 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
                         <button onclick="selectRouteAndScroll('Akumal')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
                             Reservar Ruta
                         </button>
@@ -507,14 +565,219 @@
                             <span class="block text-[11px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
                             <span class="font-heading font-extrabold text-xl text-turq-dark">$2,000 <span class="text-xs font-normal text-gray-500">MXN</span></span>
                         </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Chevrolet Suburban (1-6 pax)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$2,300 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Renault Trafic (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$2,000 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl">
+                            <span class="block text-[11px] text-gray-500 uppercase font-semibold">Mercedes Sprinter (Grupos)</span>
+                            <span class="font-heading font-extrabold text-xl text-navy">$2,300 <span class="text-xs font-normal text-gray-500">MXN</span></span>
+                        </div>
                         <button onclick="selectRouteAndScroll('Tulum')" class="w-full bg-navy hover:bg-turq text-white py-2.5 rounded-xl text-xs font-semibold transition-colors mt-2">
                             Reservar Ruta
                         </button>
                     </div>
                 </div>
 
+            </div> 
+                <!-- Nota Aclaratoria Aeropuerto Cancún -->
+                 <div class="mt-2 text-center">
+                      <p class="text-xs sm:text-sm text-gray-500 italic">
+                         * Las tarifas mostradas están sujetas a cambios sin previo aviso según la temporada, disponibilidad o ubicación exacta. Cotiza en línea para confirmar el precio final de tu viaje.
+                      </p>
+                 </div>
+
+
+            <!-- Bloque 2: Separador para el Aeropuerto de Tulum -->
+            <div class="text-center max-w-3xl mx-auto mt-20 mb-12">
+                <span class="text-turq font-bold text-xs uppercase tracking-widest bg-turq-light px-3 py-1.5 rounded-full">Nueva Ruta Disponible</span>
+                <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-navy mt-3">Rutas y Tarifas Oficiales (Aeropuerto de Tulum - TQO)</h3>
+                <p class="text-gray-600 mt-2">Precios oficiales y fijos por vehículo para tus traslados saliendo desde el Aeropuerto de Tulum.</p>
             </div>
-        </div>
+
+            <!-- Contenedor TQO con el mismo efecto de movimiento y carrusel adaptativo -->
+            <div class="flex md:grid md:grid-cols-3 lg:grid-cols-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 pt-2 px-1 md:px-0 no-scrollbar scroll-smooth scroll-hint-anim">
+                
+                <!-- TQO Route 1: Tulum Zona Hotelera -->
+                <div class="w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-5 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-turq-light text-turq rounded-xl flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-gopuram"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-base text-navy mb-1">Tulum Zona Hotelera</h4>
+                        <p class="text-[11px] text-gray-500 mb-3">Aeropuerto TQO ⇄ Zona Hotelera</p>
+                    </div>
+                    <div class="space-y-2.5 pt-3 border-t border-gray-100">
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-4 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$1,400 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-2.5 rounded-xl border border-turq/20">
+                            <span class="block text-[10px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-turq-dark">$1,400 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Suburban / Sprinter</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$1,400 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('TQO_TulumZH')" class="w-full bg-navy hover:bg-turq text-white py-2 rounded-xl text-xs font-semibold transition-colors mt-1">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TQO Route 2: Tulum Centro -->
+                <div class="w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-5 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-turq-light text-turq rounded-xl flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-city"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-base text-navy mb-1">Tulum Centro</h4>
+                        <p class="text-[11px] text-gray-500 mb-3">Aeropuerto TQO ⇄ Centro</p>
+                    </div>
+                    <div class="space-y-2.5 pt-3 border-t border-gray-100">
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-4 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$1,500 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-2.5 rounded-xl border border-turq/20">
+                            <span class="block text-[10px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-turq-dark">$1,500 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Suburban / Sprinter</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$1,500 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('TQO_TulumCentro')" class="w-full bg-navy hover:bg-turq text-white py-2 rounded-xl text-xs font-semibold transition-colors mt-1">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TQO Route 3: Akumal -->
+                <div class="w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-5 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-turq-light text-turq rounded-xl flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-fish-fins"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-base text-navy mb-1">Akumal</h4>
+                        <p class="text-[11px] text-gray-500 mb-3">Aeropuerto TQO ⇄ Akumal</p>
+                    </div>
+                    <div class="space-y-2.5 pt-3 border-t border-gray-100">
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-4 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$1,600 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-2.5 rounded-xl border border-turq/20">
+                            <span class="block text-[10px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-turq-dark">$1,600 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Suburban / Sprinter</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$1,600 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('TQO_Akumal')" class="w-full bg-navy hover:bg-turq text-white py-2 rounded-xl text-xs font-semibold transition-colors mt-1">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TQO Route 4: Playa del Carmen -->
+                <div class="w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-5 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-turq-light text-turq rounded-xl flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-umbrella-beach"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-base text-navy mb-1">Playa del Carmen</h4>
+                        <p class="text-[11px] text-gray-500 mb-3">Aeropuerto TQO ⇄ Playa</p>
+                    </div>
+                    <div class="space-y-2.5 pt-3 border-t border-gray-100">
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-4 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$2,000 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-2.5 rounded-xl border border-turq/20">
+                            <span class="block text-[10px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-turq-dark">$2,000 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Suburban / Sprinter</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$2,000 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('TQO_Playa')" class="w-full bg-navy hover:bg-turq text-white py-2 rounded-xl text-xs font-semibold transition-colors mt-1">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TQO Route 5: Cancún Centro / Zona Hotelera -->
+                <div class="w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-5 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-turq-light text-turq rounded-xl flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-hotel"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-base text-navy mb-1">Cancún Zona Hotelera</h4>
+                        <p class="text-[11px] text-gray-500 mb-3">Aeropuerto TQO ⇄ Cancún</p>
+                    </div>
+                    <div class="space-y-2.5 pt-3 border-t border-gray-100">
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-4 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$2,700 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-2.5 rounded-xl border border-turq/20">
+                            <span class="block text-[10px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-turq-dark">$2,700 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Suburban / Sprinter</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$2,700 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('TQO_Cancun')" class="w-full bg-navy hover:bg-turq text-white py-2 rounded-xl text-xs font-semibold transition-colors mt-1">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TQO Route 6: Costa Mujeres -->
+                <div class="w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center bg-white rounded-3xl p-5 shadow-md hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-turq-light text-turq rounded-xl flex items-center justify-center text-lg mb-3">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-base text-navy mb-1">Costa Mujeres</h4>
+                        <p class="text-[11px] text-gray-500 mb-3">Aeropuerto TQO ⇄ Costa Mujeres</p>
+                    </div>
+                    <div class="space-y-2.5 pt-3 border-t border-gray-100">
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Sedán BAIC (1-4 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$3,100 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-turq-light/60 p-2.5 rounded-xl border border-turq/20">
+                            <span class="block text-[10px] text-turq-dark uppercase font-semibold">Toyota Hiace (1-10 pax)</span>
+                            <span class="font-heading font-extrabold text-lg text-turq-dark">$3,100 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <div class="bg-gray-50 p-2.5 rounded-xl">
+                            <span class="block text-[10px] text-gray-500 uppercase font-semibold">Suburban / Sprinter</span>
+                            <span class="font-heading font-extrabold text-lg text-navy">$3,100 <span class="text-[10px] font-normal text-gray-500">MXN</span></span>
+                        </div>
+                        <button onclick="selectRouteAndScroll('TQO_CostaMujeres')" class="w-full bg-navy hover:bg-turq text-white py-2 rounded-xl text-xs font-semibold transition-colors mt-1">
+                            Reservar Ruta
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Nota Aclaratoria Aeropuerto Tulum (TQO) -->
+            <div class="mt-2 text-center">
+                <p class="text-xs sm:text-sm text-gray-500 italic">
+                    * Las tarifas mostradas están sujetas a cambios sin previo aviso según la temporada, disponibilidad o ubicación exacta. Cotiza en línea para confirmar el precio final de tu viaje.
+                </p>
+            </div>
+       </div>
     </section>
 
     <!-- Advanced Booking & Calculator Form Section -->
@@ -547,6 +810,9 @@
                             <select id="vehicle-select" onchange="calculatePrice()" class="w-full bg-[#0B2545] border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
                                 <option value="Sedan">Sedán BAIC U5 Plus (1-4 personas)</option>
                                 <option value="Van" selected>Toyota Hiace / Van (1-10 personas)</option>
+                                <option value="Suburban">Chevrolet Suburban (1-6 personas)</option>
+                                <option value="Trafic">Renault Trafic (Grupos y Familias)</option>
+                                <option value="Sprinter">Mercedes-Benz Sprinter (Grupos Numerosos)</option>
                             </select>
                         </div>
                     </div>
@@ -613,12 +879,23 @@
                             <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
                                 <i class="fa-solid fa-map-location-dot mr-1"></i> Ruta (Aeropuerto ⇄ Destino)
                             </label>
-                            <select id="route-select" onchange="calculatePrice()" class="w-full bg-[#0B2545] border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
-                                <option value="Cancun">Aeropuerto ⇄ Cancún Centro / Zona Hotelera</option>
-                                <option value="CostaMujeres">Aeropuerto ⇄ Costa Mujeres</option>
-                                <option value="PlayaDelCarmen" selected>Aeropuerto ⇄ Playa del Carmen</option>
-                                <option value="Akumal">Aeropuerto ⇄ Akumal</option>
-                                <option value="Tulum">Aeropuerto ⇄ Tulum</option>
+                            <select id="route-select" onchange="handleRouteChange(); calculatePrice();" class="w-full bg-[#0B2545] border border-white/20 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-turq transition-colors">
+                                <optgroup label="Salidas desde Aeropuerto de Cancún (CUN)">
+                                    <option value="Cancun">Aeropuerto Cancún ⇄ Cancún Centro / Zona Hotelera</option>
+                                    <option value="CostaMujeres">Aeropuerto Cancún ⇄ Costa Mujeres</option>
+                                    <option value="PlayaDelCarmen" selected>Aeropuerto Cancún ⇄ Playa del Carmen</option>
+                                    <option value="Akumal">Aeropuerto Cancún ⇄ Akumal</option>
+                                    <option value="Tulum">Aeropuerto Cancún ⇄ Tulum</option>
+                                </optgroup>
+                                <optgroup label="Salidas desde Aeropuerto de Tulum (TQO)">
+                                    <option value="TQO_TulumZH">Aeropuerto Tulum ⇄ Tulum Zona Hotelera</option>
+                                    <option value="TQO_TulumCentro">Aeropuerto Tulum ⇄ Tulum Centro</option>
+                                    <option value="TQO_Akumal">Aeropuerto Tulum ⇄ Akumal</option>
+                                    <option value="TQO_Playa">Aeropuerto Tulum ⇄ Playa del Carmen</option>
+                                    <option value="TQO_Cancun">Aeropuerto Tulum ⇄ Cancún Zona Hotelera</option>
+                                    <option value="TQO_CostaMujeres">Aeropuerto Tulum ⇄ Costa Mujeres</option>
+                                </optgroup>
+                                <option value="otro">Otro (Origen y Destino libre)</option>
                             </select>
                         </div>
 
@@ -631,6 +908,22 @@
                                 <option value="Sencillo">Sencillo (One Way)</option>
                                 <option value="Redondo">Redondo (Round Trip - Doble tarifa)</option>
                             </select>
+                        </div>
+                    </div>
+
+                    <!-- Cuadro desplegable para Origen y Destino Personalizado (Aparece al seleccionar "Otro") -->
+                    <div id="custom-route-container" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white/5 border border-turq/30 p-5 rounded-2xl">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Escribe tu Origen
+                            </label>
+                            <input type="text" id="custom-origin" placeholder="Ej. Hotel Xcaret, Puerto Morelos..." class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-turq transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-turq mb-2">
+                                <i class="fa-solid fa-flag-checkered mr-1"></i> Escribe tu Destino
+                            </label>
+                            <input type="text" id="custom-destination" placeholder="Ej. Marina Puerto Cancún, Centro..." class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3.5 text-white placeholder-gray-400 text-sm focus:outline-none focus:border-turq transition-colors">
                         </div>
                     </div>
 
@@ -774,10 +1067,15 @@
                         Servicio de transportación turística privada desde el Aeropuerto de Cancún hacia Cancún, Costa Mujeres, Playa del Carmen, Akumal y Tulum.
                     </p>
                     <div class="flex items-center gap-3 pt-2">
-                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
+                        <!-- Facebook -->
+                   <a href="https://www.facebook.com/share/1C2jShztPU/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    
+                        <!-- Instagram -->
+                    <a href="https://www.instagram.com/cancungoride?stkn=Z2U2NGVqOXQyYmJy" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    
+                        <!-- TikTok (Sustituyendo a WhatsApp) -->
+                    <a href="https://www.tiktok.com/@cancungoride" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 hover:bg-turq rounded-xl flex items-center justify-center transition-colors text-white" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+</div>
                 </div>
 
                 <!-- Col 2 -->
@@ -825,11 +1123,11 @@
             <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
                 <p>&copy; 2026 Cancungoride. Todos los derechos reservados.</p>
                 <div class="flex gap-6">
-                    <a href="#" class="hover:text-turq transition-colors">Aviso de Privacidad</a>
-                    <a href="#" class="hover:text-turq transition-colors">Términos y Condiciones</a>
+                    <a href="aviso-privacidad.html" class="hover:text-turq transition-colors">Aviso de Privacidad</a>
+                    <a href="terminos-y-condiciones.html" class="hover:text-turq transition-colors">Términos y Condiciones</a>
                 </div>
             </div>
-        </div>
+
     </footer>
 
     <!-- Floating WhatsApp Button -->
@@ -932,5 +1230,19 @@
 
     <!-- Enlace al archivo de script externo -->
     <script src="script.js"></script>
+
+    <!-- Script de Google Translate -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es', // Idioma base en el que está creada tu página
+    includedLanguages: 'en,es,zh-CN,fr,de,it', // Idiomas disponibles: Inglés, Español, Chino (Simplificado), Francés, Alemán, Italiano
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
